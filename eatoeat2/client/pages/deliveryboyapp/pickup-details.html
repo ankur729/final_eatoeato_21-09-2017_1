@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" class="row-md-100">
+	<head>
+		<title>Eato Eato</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon"/>
+		<meta name="viewport" content="width=device-width, user-scalable=no" />
+
+		<link rel="stylesheet" type="text/css" href="css/reset.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="css/media.css">
+
+		<link href="fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+		<script src="js/min.js"></script>
+		<!-- css end here-->
+	</head>
+
+<body class="bg-grey">
+<div class="main-container">
+
+<div class="otp-popup">
+	<div class="inner-design">
+		<span class="close-popup"><i class="fa fa-close"></i></span>
+		<span class="title">Enter OTP of Cook</span>
+		<div class="input-div"><input type="text" name="" class="input-box" placeholder="Enter OTP"></div>
+		<div class="input-div margin-top-20px"><input type="submit" name="" class="submit-btn"  value="Submit OTP"></div>
+	</div>
+</div>
+
+<!-- header start here -->
+	<div class="header">
+		<a href="pickup.html" class="toggle-menu"><i class="fa fa-long-arrow-left"></i></a>
+		<h2 class="title">Pickup Details</h2>
+	</div>
+<!-- header end here -->
+
+<!-- pickup details start here -->
+<div class="pickup-details">
+	<div class="map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3501.792732099854!2d77.28329711456873!3d28.6359734906771!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfca9f1216467%3A0x7572bcc0502d02b8!2s11%2C+Vikas+Marg%2C+Block+A%2C+Laxmi+Nagar%2C+New+Delhi%2C+Delhi+110031!5e0!3m2!1sen!2sin!4v1503729854282" width="100%" height="350" frameborder="0" style="border:0" allowfullscreen></iframe></div>
+
+	<div class="pickup-data">
+		<h4 class="title">Cook Info</h4>
+		<div class="cook-info">
+			<div class="coloum-div">
+				<span class="data"> Prahlad Kuamar </span>
+				<span class="data"> 9711199476 </span>
+			</div>
+			<div class="coloum-div text-right">
+				<span class="data"> G-11, Preet Vihar - 110092</span>
+				<span class="data"> 09 Aug | 12am</span>
+			</div>
+		</div>
+		<a href="#0" class="order-number">ET95640583666606</a>
+		<a href="#0" class="pick-btn right open-otp">To Pick</a>
+	</div>
+</div>
+<!-- pickup details end here -->
+
+	
+</div>
+
+<script type="text/javascript">
+$(".open-otp").click(function(){
+	$(".otp-popup").fadeIn();
+});
+
+$(".close-popup , .overlay").click(function(){
+	$(".otp-popup").fadeOut();
+});
+</script>
+
+</body>
+</html>

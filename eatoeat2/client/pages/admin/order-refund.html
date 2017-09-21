@@ -1,0 +1,191 @@
+
+<!-- main container start herer -->
+<div class="main-container dashboard" ng-controller="admin_controller" ng-init="admin_auth()" >
+
+<div ng-include="'pages/admin/admin-left-menu.html'"></div>
+
+<div class="income-popup" >
+    <div class="design-box">
+            <span class="main-title">Refunding Amount To Wallet</span>
+        <span class="close-popup" ><i class="fa fa-close"></i></span>
+        <div class="display-setting">
+			<div class="form-setting">
+				<div class="input-div">
+					<span class="label">ORDERID</span>
+					<input type="text" placeholder="Date" class="input-box" ng-model="refund_popup_view.orderid" readonly/>
+					<input type="hidden" placeholder="Date" class="input-box" ng-model="refund_popup_view.user_id" readonly/>
+					
+				</div>
+								<div class="input-div">
+					<span class="label">Username</span>
+					<input type="text" placeholder="Username" class="input-box" readonly ng-model="refund_popup_view.username"/>
+				</div>
+				<div class="input-div">
+					<span class="label">Amount</span>
+					<input type="text" placeholder="Amount" class="input-box"  ng-model="refund_popup_view.amount" />
+				</div>
+
+				<div class="input-div center">
+					<input type="submit" value="Submit" class="submit-btn" ng-click="confirm_refund_send()"/>
+				</div>
+			</div>
+        </div>
+    </div>
+</div>
+
+
+	<div class="work-pannel" ng-init="fetch_user_refund_orders_all()" >
+		<!-- top header start here -->
+		<div class="top-header">
+			<div class="container">
+				<ul class="menu">
+					<li class="logout-btn"  ng-click="admin_logout()"><a href="#0" class="main-link">Logout</a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- top header end here -->
+
+		<div class="container">
+			<div class="view-pannel">
+
+				<!-- page bar start here -->
+				<div class="page-name-bar">
+					<h2 class="page-name">Orders</h2>
+					<ul class="breadcrumbs">
+						<li class="list"><a href="#/admin" class="link">Home</a></li>
+						<li class="list">All Orders</li>
+					</ul>
+
+					<ul class="link-icon">
+						<li class="list"><div class="white-btn" style="cursor: pointer" ng-click="fetch_user_refund_orders_all()"><i class="fa fa-refresh" aria-hidden="true"></i></div></li>
+					</ul>
+				</div>
+				<!-- page bar end here -->
+
+				<div class="table-view">
+					<h3 class="head-name">All Order List</h3>
+
+					<div class="search-model">
+						<div class="search-div">
+							<label class="search-name">Order ID</label>
+							<input type="text" name="" class="input-box" placeholder="Order ID" ng-model="forder.order_id">
+						</div>
+						<div class="search-div">
+							<label class="search-name">Customer Name</label>
+							<input type="text" name="" class="input-box" placeholder="Customer Name" ng-model="forder.username">
+						</div>
+						
+						<div class="search-div">
+							<label class="search-name">Payment Mode</label>
+							<select class="select-option left"  ng-model="forder.order_paymode">
+								<option>Select</option>
+								<option value="cod">COD</option>
+								<option value="wallet">Wallet</option>
+								<option value="online">Online</option>
+							</select>
+						</div>
+						<div class="search-div">
+							<label class="search-name">Order Status</label>
+							<select class="select-option left" ng-model="forder.order_status">
+								<option value="">-Select Order Status-</option>
+								<option value="pending">PENDING</option>
+								<option value="confirmed">CONFIRMED</option>
+								<option value="ready_for_del">READY_FOR_DEL </option>
+								<option value="delivered">DELIVERED </option>
+								<option value="cancelled">CANCELLED </option>
+							</select>
+						</div>
+						<div class="search-div">
+							<label class="search-name">Order Date</label>
+							<input type="text" name="" class="input-box"  placeholder="Order Date"  ng-model="forder.order_date" >
+						</div>
+						<!--<button class="search-btn right">Filter</button>-->
+					</div>
+
+					<ul class="cat-listing-show">
+						<!-- heading part start here-->
+						<li class="list main-name">
+							<div class="coloum-div col-px-10 center">
+								<!--<input type="checkbox" name="" class="check-all-btn">-->
+							</div>
+							<div class="coloum-div col-px-150">
+								<span class="title">Order ID</span>
+							</div>
+							<div class="coloum-div">
+								<span class="title">Customer Name</span>
+							</div>
+							<div class="coloum-div col-px-100 center">
+								<span class="title">Total</span>
+							</div>
+							<div class="coloum-div col-px-150 center">
+								<span class="title">Payment Mode</span>
+							</div>
+							<div class="coloum-div col-px-100 center">
+								<span class="title">Status</span>
+							</div>
+							<div class="coloum-div col-px-100 center">
+								<span class="title">Date Added</span>
+							</div>
+							<div class="coloum-div col-px-100 center">
+								<span class="title">Refund</span>
+							</div>
+							<div class="coloum-div col-px-100 center">
+								<span class="title">View</span>
+							</div>
+						</li>
+					</ul>
+					<!-- heading part end here-->
+					<ul class="cat-listing-show list-group">
+						<li class="list" ng-repeat="order in view_all_orders  | filter:{ order_id:forder.order_id } | filter:{ username:forder.username } | filter:{ order_status:forder.order_status } | filter:{ order_id:forder.order_id } | filter:{ date:forder.order_date }| filter:{ order_status:forder.order_paymode } ">
+							<div class="coloum-div col-px-10 center">
+								<!--<input type="checkbox" name="" class="check-btn">-->
+							</div>
+							<div class="coloum-div col-px-150">
+								<span class="title">{{order.order_id}}</span>
+							</div>
+							<div class="coloum-div">
+								<span class="title">{{order.username | uppercase}}</span>
+							</div>
+							<div class="coloum-div col-px-100 center">
+								<span class="title">Rs. {{order.grand_total}}/- </span>
+							</div>
+							<div class="coloum-div col-px-150 center">
+								<!--<span ng-if="order.pay_status=='false'"> / Failed </span>-->
+								<span class="title" ng-if="order.items[0].pay_mode=='cod'">{{order.items[0].pay_mode | uppercase}} </span>
+								<span class="title" ng-if="order.items[0].pay_mode=='wallet'">{{order.items[0].pay_mode | uppercase}} </span>
+								<span class="title" ng-if="order.items[0].pay_mode=='online' && order.pay_status=='false'">{{order.items[0].pay_mode | uppercase}} / FAILED </span>
+								<span class="title" ng-if="order.items[0].pay_mode=='online' && order.pay_status=='true'">{{order.items[0].pay_mode | uppercase}} / SUCCESS </span>
+							
+								<span class="title" ng-if="order.items[0].pay_mode=='wallet+online' && order.pay_status=='true'"> W+O / SUCCESS </span>
+								<span class="title" ng-if="order.items[0].pay_mode=='wallet+online' && order.pay_status=='false'">W+O / FAILED </span>
+				
+
+							</div>
+							<div class="coloum-div col-px-100 center">
+								<span class="title">{{order.order_status | uppercase}}</span>
+							</div>
+							<div class="coloum-div col-px-100 center">
+								<span class="title">{{order.date}}</span>
+							</div>
+							<div class="coloum-div col-px-100 center">
+								<span class="view-btn" ng-click="show_refund_view(order)" >Refund</span>
+							</div>
+							<div class="coloum-div col-px-100 center">
+								<a href="#/admin/order-detail" class="view-btn" title="view"  ng-click="view_order_temp_id(order.order_id)" ><i class="fa fa-eye"></i></a>
+							</div>
+						</li>
+					
+					
+					</ul>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+<script type="text/javascript">
+    $(".close-popup").click(function(){
+        $(".income-popup").hide();
+    });
+
+	</script>

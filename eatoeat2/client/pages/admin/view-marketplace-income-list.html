@@ -1,0 +1,389 @@
+
+<!-- main container start herer -->
+<div class="main-container dashboard" ng-controller="admin_controller">
+
+<div ng-include="'pages/admin/admin-left-menu.html'"></div>
+
+
+
+
+<div class="income-popup" >
+    <div class="design-box">
+            <span class="main-title">Pay Now</span>
+        <span class="close-popup" ><i class="fa fa-close"></i></span>
+        <div class="display-setting">
+			<div class="form-setting">
+				<div class="input-div">
+					<span class="label">Date</span>
+					<input type="text" placeholder="Date" class="input-box" ng-model="income_pay_obj.date" readonly/>
+					<input type="hidden" placeholder="Date" class="input-box" ng-model="income_pay_obj.cook_id" readonly/>
+						<input type="hidden" placeholder="Date" class="input-box" ng-model="income_pay_obj.orderid" readonly/>
+				</div>
+				<div class="input-div">
+					<span class="label">Amount</span>
+					<input type="text" placeholder="Amount" class="input-box"  ng-model="income_pay_obj.amount" readonly/>
+				</div>
+				<div class="input-div">
+					<span class="label">Comment</span>
+					<input type="text" placeholder="Comment" class="input-box"  ng-model="income_pay_obj.comment"/>
+				</div>
+				<div class="input-div center">
+					<input type="submit" value="Submit" class="submit-btn" ng-click="save_payment_info(income_pay_obj)"/>
+				</div>
+			</div>
+        </div>
+    </div>
+</div>
+
+<div class="income-popup-view-details" >
+    <div class="design-box">
+            <span class="main-title">Paid Details</span>
+        <span class="close-popup-details" ><i class="fa fa-close"></i></span>
+        <div class="display-setting">
+			<div class="form-setting">
+				
+					<div class="input-div">
+					<span class="label">Amount</span>
+					<input type="text" placeholder="Amount" class="input-box"  ng-model="income_payment_detail_view.amount" readonly/>
+				</div>
+				<div class="input-div">
+					
+					<span class="label">Date</span>
+					<input type="text" placeholder="Date" class="input-box" ng-model="income_payment_detail_view.date" readonly/>
+				
+				</div>
+			
+				<div class="input-div">
+				
+					<span class="label">Time</span>
+					<input type="text" placeholder="Comment" class="input-box"  ng-model="income_payment_detail_view.time" readonly/>
+				</div>
+			
+				<div class="input-div">
+					
+					<span class="label">Comment</span>
+					<input type="text" placeholder="Comment" class="input-box"  ng-model="income_payment_detail_view.comment" readonly/>
+				</div>
+
+				<div class="input-div">
+				
+					<span class="label">Status</span>
+					<input type="text" placeholder="Comment" class="input-box"  ng-model="income_payment_detail_view.status" readonly/>
+				</div>
+			</div>
+        </div>
+    </div>
+</div>
+	<div class="work-pannel" ng-init="fetch_income_detail()">
+		<!-- top header start here -->
+		<div class="top-header">
+			<div class="container">
+				<ul class="menu">
+					<li class="logout-btn"><a href="#0" class="main-link">Logout</a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- top header end here -->
+
+		<div class="container">
+			<div class="view-pannel">
+
+				<!-- page bar start here -->
+				<div class="page-name-bar">
+					<h2 class="page-name">Income</h2>
+					<ul class="breadcrumbs">
+						<li class="list"><a href="#/admin" class="link">Home</a></li>
+						<li class="list">Income</li>
+					</ul>
+
+					<ul class="link-icon">
+
+						<li class="list"><div class="white-btn" ng-click="fetch_income_detail()" style="cursor: pointer"><i class="fa fa-refresh" aria-hidden="true"></i></div></li>
+					
+					</ul>
+
+				</div>
+				<!-- page bar end here -->
+
+				<div class="table-view">
+					<h3 class="head-name">Income</h3>
+
+					<div class="search-model">
+							<div class="search-div">
+							<label class="search-name">Order Id</label>
+							<input type="text" name="" class="input-box" placeholder="Order Id" ng-model="searchFilter2" >
+						</div>	
+						<div class="search-div">
+							<label class="search-name">Cook Name</label>
+							
+							<input type="text" name="" class="input-box" placeholder="Cook Name" ng-model="searchFilter" >
+						</div>
+					
+							<div class="search-div">
+							<label class="search-name">Payment Mode</label>
+						
+							<select class="select-option left" ng-model="pay_mode">
+								<option value="">--Select--</option>
+								<option value="cod">COD</option>
+								<option value="wallet">Wallet</option>
+								<option value="online">Online</option>
+						
+							</select>
+						</div>
+						<div class="search-div">
+							<label class="search-name">Payment Status</label>
+						
+							<select class="select-option left" ng-model="paid_status">
+								<option value="">--Select--</option>
+								<option value="paid">Paid</option>
+								<option value="unpaid">UnPaid</option>
+							
+						
+							</select>
+						</div>
+							<div class="search-div">
+
+								<label class="search-name" for="pickup" >Select Order Date Range:</label>
+
+						<input type="text" class="input-box" id="pickup" data-date-range-end="#return" readonly>
+
+
+							<!--<label class="search-name">From Date</label>
+							<input type="text" name="" class="input-box" placeholder="From (NOT ACTIVE)" >-->
+						</div>
+						<div class="search-div">
+						<label class="search-name" for="return"></label>
+
+						<input class="input-box" type="text" id="return" data-date-range-start="#pickup" readonly>
+
+						</div>
+
+						<div class="search-div" >
+								<button style="cursor: pointer" ng-click="sort_income_orders_by_date()" class="search-btn right">Search</button>
+								<!--<button style="cursor: pointer" ng-click="fetch_income_detail()" class="fa fa-refresh">Refresh </button>-->
+						</div>
+							<div class="search-div" >
+								<button style="cursor: pointer" ng-click="excelexportincome()" class="search-btn right">Export</button>
+								<!--<button style="cursor: pointer" ng-click="fetch_income_detail()" class="fa fa-refresh">Refresh </button>-->
+						</div>
+						
+					</div>
+					
+			<ul class="delivery-details">
+				<li class="delivery-list col-px-250">	
+					<h6 class="title">EATO EATO Total</h6>
+					<br>
+					<ul class="detail-list">
+						<li class="list-li">
+							<span class="label col-px-125">Income</span>
+						<b>	<span class="data">Rs. {{resultValue | sumOfValue:'income' | number : 2}}</span></b>
+						</li>
+						<li class="list-li">
+							<span class="label col-px-125">Delivery Charge</span>
+						<b>	<span class="data">Rs. {{resultValue | sumOfValue:'delivery_charge' | number : 2}}</span></b>
+						</li>
+						<li class="list-li">
+							<span class="label col-px-125">GST</span>
+							<!--<span class="data">{{view_all_order_detail_page.user_data[0].phone}}  &nbsp; | &nbsp; <b>At Home</b></span>-->
+						<b>	<span class="data">Rs. {{resultValue | sumOfValue:'eatoeato_gst' | number : 2}}</span></b>
+						</li>
+						
+					</ul>
+				</li>
+				<li class="delivery-list">
+					<h6 class="title">Cook Total</h6>
+					<br>
+					<ul class="detail-list">
+						<li class="list-li">
+							<span class="label col-px-125">Food Value</span>
+						<b>	<span class="data">Rs. {{resultValue | sumOfValue:'food_total_price' | number : 2}}</span></b>
+						</li>
+						<br>
+						<li class="list-li">
+							<span class="label col-px-125">GST</span>
+						<b>	<span class="data">Rs. {{resultValue | sumOfValue:'tax_rate' | number : 2}}</span></b>
+						</li>
+					
+					</ul>
+				</li>
+			
+			</ul>
+
+
+				<div class="table-scroll-view">
+				
+					
+					<ul class="cat-listing-show">
+						<!-- heading part start here-->
+						<li class="list main-name">
+							<div class="coloum-div">
+								<span class="title">Order Id</span>
+							</div>
+								<div class="coloum-div col-px-150 center">
+								<span class="title">Cook Name</span>
+							</div>
+							<div class="coloum-div col-px-100 center">
+								<span class="title">Date / Time</span>
+							</div>
+
+							<div class="coloum-div col-px-75 center">
+								<span class="title">Discount</span>
+							</div>
+
+							<div class="coloum-div col-px-100 center">
+								<span class="title">Payment Mode</span>
+							</div>
+
+							<div class="coloum-div col-px-100 center">
+								<span class="title">Total Value</span>
+							</div>
+							<div class="coloum-div col-md-16">
+								<div class="coloum-group center">EATO EATO</div>
+								<div class="center col-md-20 left">
+									<span class="title">Income</span>
+								</div>
+								<div class="center col-md-60 left">
+									<span class="title">Delivery Charges</span>
+								</div>
+								<div class=" center col-md-20 left">
+									<span class="title">GST</span>
+								</div>
+							</div>
+							
+
+							<div class="coloum-div col-md-16">
+								<div class="coloum-group center">COOK</div>
+								<div class="center col-md-50 left">
+									<span class="title">Food Value</span>
+								</div>
+								<div class="center col-md-20 left">
+								</div>
+								<div class=" center col-md-50 left">
+									<span class="title">GST</span>
+								</div>
+							</div>
+
+		
+
+							<div class="coloum-div col-px-150 center">
+								<span class="title">GST Registered</span>
+							</div>
+
+							<div class="coloum-div col-px-100 center">
+								<span class="title">Pay Status</span>
+							</div>
+
+							<div class="coloum-div col-px-100 center">
+								<span class="title">Pay Now</span>
+							</div>
+
+							
+						
+						</li>
+					</ul>
+					<!-- heading part end here-->
+					<ul class="cat-listing-show list-group">
+						
+						<li class="list" ng-repeat="income in resultValue=(income_list_view | filter:{'cook_name':searchFilter} | filter:{'order_id':searchFilter2} | filter:{'pay_mode':pay_mode}  | filter:{'paid_status':paid_status })" >
+							<div class="coloum-div">
+								<span class="title">{{income.order_id}}</span>
+							</div>
+								<div class="coloum-div col-px-150 center">
+								<span class="title">{{income.cook_name | capitalize}}</span>
+							</div>
+							<div class="coloum-div col-px-100 center">
+								<span class="title">{{income.date}} <br> {{income.delivery_time}}</span>
+							</div>
+
+							<div class="coloum-div col-px-75 center">
+								<span class="title"> Rs. {{income.discount_amt}}</span>
+							</div>
+
+							<div class="coloum-div col-px-100 center">
+								<span class="title">{{income.pay_mode | uppercase}}</span>
+							</div>
+
+							<div class="coloum-div col-px-100 center">
+								<span class="title">Rs. {{income.eatoeato_total_val}}</span>
+							</div>
+							<div class="coloum-div col-md-16">
+								<div class="center col-md-20 left">
+									<span class="title">Rs. {{income.income}}</span>
+								</div>
+								<div class="center col-md-60 left">
+									<span class="title">Rs. {{income.delivery_charge}}</span>
+								</div>
+								<div class=" center col-md-20 left">
+									<span class="title">Rs. {{income.eatoeato_gst}}</span>
+								</div>
+							</div>
+
+
+
+							<div class="coloum-div col-md-16">
+								<div class="center col-md-50 left">
+									<span class="title">Rs. {{income.food_total_price}}</span>
+								</div>
+								<div class="center col-md-20 left">
+								</div>
+								<div class=" center col-md-50 left">
+									<span class="title">Rs. {{income.tax_rate}}</span>
+								</div>
+							</div>
+
+												
+					
+						<div class="coloum-div col-px-150 center">
+								<span class="title" ng-if="income.cook_data[0].is_gstin=='false'">NO</span>
+								<span class="title" ng-if="income.cook_data[0].is_gstin=='true'">YES</span>
+							</div>
+
+
+							<div class="coloum-div col-px-100 center">
+								<span class="title">{{income.paid_status | uppercase}}</span>
+							
+							</div>
+
+							<div class="coloum-div col-px-100 center" >
+								<span class="title" ng-if="income.comission_data.length >0" > <a class="no-btn"  ng-click="income_pay_btn_show_detail_view(income.comission_data,income.cook_name)"> View Now</a></span>
+								<span class="title" ng-if="income.comission_data.length <1"> <a class="yes-btn"  ng-click="income_pay_btn_show(income.order_id,income.items[0].cook_id,income.food_total_price,income.tax_rate,income.cook_data[0].is_gstin)"> Pay Now</a></span>
+							</div>						
+						</li>
+
+
+					</ul>
+		
+					</div>	
+			
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<script>
+
+
+
+	$("#pickup").datepicker({
+		 changeMonth: true,
+
+  changeYear: true,
+
+});
+
+</script>
+<script type="text/javascript">
+    $(".close-popup").click(function(){
+        $(".income-popup").hide();
+    });
+
+    $(".close-popup-details").click(function(){
+        $(".income-popup-view-details").hide();
+    });
+
+</script>
+
+
+<!-- main container end herer -->

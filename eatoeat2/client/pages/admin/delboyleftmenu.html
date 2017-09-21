@@ -1,0 +1,131 @@
+<div class="left-menu" ng-controller="delivery_boy_controller" ng-init="fetchdvlogindata()">
+	<span style="cursor: pointer" class="close-btn">Close</span>
+	<div class="open-menu">
+		<div class="logo"><img src="http://eatoeato.com:3000/pages/admin/images/w-logo.png"></div>
+
+		<div class="details-show">
+			<h1>Hi, {{delboyprofiledata.boy_name | capitalize}}</h1>
+			<span>{{delboyprofiledata.boy_contact}}</span>
+		</div>
+		<ul class="menu-list">
+			<li class="list"><a href="#/deliveryboy/pickup2"  class="link">Pickup Items</a></li>
+			<li class="list"><a  href="#/deliveryboy/drop"  class="link">Drop Items</a></li>
+			<li class="list"><a href="#/deliveryboy/profiledetails" class="link">Profile Details</a></li>
+			<li class="list"><a style="cursor: pointer" ng-click="logoutdvlogin()" class="link">Logout</a></li>
+		</ul>
+		<span class="copyright">Copyright © 2017, www.eatoeato.com.</span>
+	</div>
+	<span class="overlay"></span>
+</div>
+
+<script type="text/javascript">
+
+	$(".open-otp").click(function () {
+		$(".otp-popup").fadeIn();
+	});
+
+	$(".close-popup").click(function () {
+		$(".otp-popup").fadeOut();
+	});
+
+	$(".toggle-menu").click(function () {
+		$(".left-menu").fadeIn();
+	});
+
+	$(".close-btn , .overlay").click(function () {
+		$(".left-menu").fadeOut();
+	});
+
+
+	$(".header .search-toggle").click(function () {
+		$(".search-show").show();
+	});
+	$(".header .search-back").click(function () {
+		$(".search-show").hide();
+	});
+
+
+
+	//console.log(window.location.hash);
+
+	$(".tab-slider--nav li a").click(function (e) {
+
+		$(".tab-slider--body").hide();
+		var activeTab = $(this).parent('li').attr("rel");
+		$('#' + activeTab).show();
+		// history.pushState({}, '', activeTab);
+		var setindex = $(this).parent('li').index();
+		var totalliwidth = 0;
+		var alltoatalliwidth = 0;
+		$(".tab-slider--nav li").each(function () {
+
+			var setliwidth = $(this).width();
+
+			var nsetndex = $(this).index();
+			if (nsetndex < setindex) {
+
+				totalliwidth += setliwidth;
+			}
+			alltoatalliwidth += setliwidth;
+
+
+		});
+		//console.log(totalliwidth);
+		$('.slide-trigger').css('left', totalliwidth);
+		$('.slide-trigger').css('width', $(this).parent('li').width() + 'px');
+		$('.tab-slider--trigger').children('a').removeClass('active');
+		$(this).addClass('active');
+
+	});
+
+	var mainhash = [];
+	$('.tab-slider--trigger').each(function () {
+
+		mainhash.push($(this).children('a').attr('href'));
+
+	});
+
+
+
+	var hash = window.location.hash.substr(1);
+
+	if (hash != '' && $.inArray("#" + hash, mainhash) != -1) {
+
+		$('.tab-slider--trigger').children('a').removeClass('active');
+		$('.tab-slider--trigger[rel=' + hash + '_main]').children('a').addClass('active');
+		$('.tab-slider--trigger[rel=' + hash + '_main]').addClass('divactive');
+		$('.tab-slider--body').hide();
+		$('#' + hash + '_main').show();
+		var totalliwidth = 0;
+		var alltoatalliwidth = 0;
+		var setindex = $('.tab-slider--trigger[rel=' + hash + '_main]').index();
+		var slidechild = $('.tab-slider--trigger.divactive').width();
+		$('.slide-trigger').css('width', slidechild + 'px');
+
+
+		$(".tab-slider--nav li").each(function () {
+
+			var setliwidth = $(this).width();
+
+			var nsetndex = $(this).index();
+			if (nsetndex < setindex) {
+
+				totalliwidth += setliwidth;
+			}
+			alltoatalliwidth += setliwidth;
+
+
+		});
+		$('.slide-trigger').css('left', totalliwidth);
+
+	} else {
+		slidechild = $('.tab-slider--trigger.active').width();
+		$('.slide-trigger').css('width', slidechild + 'px');
+		$(".tab-slider--body").hide();
+		$(".tab-slider--body.active").show();
+		$('.tab-slider--trigger').eq(0).children('a').addClass('active');
+
+
+	}
+
+</script>

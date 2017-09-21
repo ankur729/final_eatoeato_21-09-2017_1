@@ -1,0 +1,147 @@
+<div ng-controller="user_register" ng-show="show_pay_page">
+
+	<link href="plugin/calendar/css/1.css" rel="stylesheet">
+	<div ng-include="'pages/inc/header.html'" class="common-header"></div>
+
+	<div class="container my-account-page" ng-init="payment_gateway_test()">
+		<!--<div ng-include="'pages/user/inc/account-panel.html'" class="left-panel"></div>-->
+
+		<div class="right-panel update-profile w-shadow">
+			<!--<h4 class="page-name">Update your Profile</h4>
+
+			<p ng-show="user_profile_update_status" style="font-size:12px;color:green">Profile Successfully Updated..!</p>
+			<p ng-show="after_forget_mail_failed" style="font-size:12px;color:red">Email Or User is Not Registered with us.!</p>
+			-->
+				<div onload="document.payuForm.submit()">
+			<form name="payuForm" id="payuForm" action="https://secure.payu.in/_payment" method="post" >
+			<div class="display-setting">
+				<div class="form-box">
+
+					<!--<div class="col-md-20 left">
+						<div class="form-div center">
+							
+			<label class="upload-single-image left" title="Please upload your logo">
+			 <input type="file" id="file" class="input-file" name="file"  ngf-change="upload_user_profile_image($files)" ngf-select ng-model="picFile" name="attachement" accept="image/png, image/jpeg, image/jpg "/>
+			 
+			<span class="thumb" ><img ng-src="{{user_profile_update_data.user_profile_image_web}}"  ngf-src="picFile[0]" 	></span>
+						
+			</label>
+				</div>
+					</div> 
+	-->
+
+					<div class="col-md-40 left">
+						<div class="form-div">
+							<span class="label">merchant_key</span>
+							<input name="key"  class="input-box" placeholder="Your Name" type="text" ng-model="pay_model.key">
+						</div>
+
+						<div class="form-div">
+							<span class="label">hash</span>
+							<input name="hash" class="input-box" placeholder="Your Name" type="text" ng-model="pay_model.hash">
+						</div>
+
+						<div class="form-div">
+							<span class="label">txnid</span>
+							<input name="txnid" class="input-box" placeholder="Your Name" type="text" ng-model="pay_model.txnid">
+						</div>
+
+						<div class="form-div">
+							<span class="label">amount</span>
+							<input name="amount" id="amount" class="input-box" placeholder="Your Name" type="text" ng-model="pay_model.amount">
+						</div>
+						<div class="form-div">
+							<span class="label">firstname</span>
+							<input name="firstname" class="input-box" placeholder="Your Name" type="text" ng-model="pay_model.firstname">
+						</div>
+
+						<div class="form-div">
+							<span class="label">email</span>
+							<input name="email" class="input-box" placeholder="Your Name" type="text" ng-model="pay_model.email">
+						</div>
+
+						<div class="form-div">
+							<span class="label">phone</span>
+							<input name="phone" class="input-box" placeholder="Your Name" type="text" ng-model="pay_model.phone">
+						</div>
+
+							<div class="form-div">
+							<span class="label">productinfo</span>
+							<input name="productinfo" class="input-box" placeholder="Your Name" type="text" ng-model="pay_model.productinfo">
+						</div>
+
+							<div class="form-div">
+							<span class="label">surl</span>
+							<input name="surl" class="input-box" placeholder="Your Name" type="text" ng-model="pay_model.surl">
+						</div>
+
+							<div class="form-div">
+							<span class="label">furl</span>
+							<input name="furl" class="input-box" placeholder="Your Name" type="text" ng-model="pay_model.furl">
+						</div>
+
+							<div class="form-div">
+							<span class="label">service_provider</span>
+							<input name="service_provider" size="64" class="input-box" placeholder="Your Name" type="text" ng-model="pay_model.service_provider">
+						</div>
+						<div class="form-div">
+							<span class="label">Curl</span>
+							<input name="curl" class="input-box" placeholder="Your Name" type="text" ng-model="">
+						</div>
+
+							<!--<div class="form-div">
+							<span class="label">merchant_key</span>
+							<input name="" class="input-box" placeholder="Your Name" type="text" ng-model="user_profile_update_data.username">
+						</div>-->
+
+						<div class="form-div">
+							<input name="" class="submit-btn" value="Save" type="submit" >
+						</div>
+					</div>
+				</div>
+			</div>
+			</form>
+				</div>
+		</div>
+
+	</div>
+
+	<div ng-include="'pages/inc/footer.html'"></div>
+	<script src="plugin/calendar/js/1.js"></script>
+	<script type="text/javascript">
+
+		$('#dp2').fdatepicker({
+			closeButton: false
+		});
+// 		$(document).ready(function(){
+//      $("#payuForm").submit();
+// });
+	</script>
+			
+			<script>	
+
+			 window.setTimeout(function(){
+		var amount = $('#amount').val();
+ 			if(amount !=''){
+		    	var payuForm = document.forms.payuForm;
+			payuForm.submit();
+
+
+	 }
+    
+
+    }, 1000);
+			// $(document).ready(function(){	
+			// var amount = $('#amount').val();
+			// console.log('TEST P AYU');
+			// alert("==========>"+amount);
+			// console.log(amount);
+
+			// });
+			// if(amount!=''){
+			// var payuForm = document.forms.payuForm;
+			// payuForm.submit();
+			// }
+
+			</script>
+</div>

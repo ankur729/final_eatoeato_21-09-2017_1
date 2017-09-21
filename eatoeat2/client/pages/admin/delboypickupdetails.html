@@ -1,0 +1,64 @@
+
+<div class="main-container dashboard" ng-controller="delivery_boy_controller" ng-init="show_cook_pickup_info()">
+<div class="delivery-panel">
+<div class="otp-popup">
+	<div class="inner-design">
+		<span class="close-popup"><i class="fa fa-close"></i></span>
+		<span class="title">Enter OTP of Cook</span>
+		<div class="input-div"><input type="text" name="" class="input-box" placeholder="Enter OTP"></div>
+		<div class="input-div margin-top-20px"><input type="submit" name="" class="submit-btn"  value="Submit OTP"></div>
+	</div>
+</div>
+</div>
+<!-- header start here -->
+<div class="delivery-panel">
+	<div class="header">
+		<a href="#/deliveryboy/pickup" class="toggle-menu"><i class="fa fa-long-arrow-left"></i></a>
+		<h2 class="title">Pickup Details</h2>
+	</div>
+</div>
+<!-- header end here -->
+
+<!-- pickup details start here -->
+
+<div class="delivery-panel">
+
+<div class="pickup-details">
+	<div class="map"><iframe src="" id="mapcanvas" width="100%" height="350" frameborder="0" style="border:0" allowfullscreen></iframe></div>
+
+	<div class="pickup-data">
+		<h4 class="title">Cook Info</h4>
+		<div class="cook-info">
+			<div class="coloum-div">
+				<span class="data"> {{view_dvcook_info.cook_name | uppercase}} </span>
+				<span class="data"> {{view_dvcook_info.cook_contact}} </span>
+			</div>
+			<div class="coloum-div text-right">
+				<span class="data"> {{view_dvcook_info.landmark}}</span>
+				<span class="data"> {{view_dvcook_info.orderdate}} | {{view_dvcook_info.ordertime | date:'hh:mm a'}}</span>
+			</div>
+		</div>
+		<a class="order-number">{{view_dvcook_info.order_id}}</a>
+		
+		<a  class="pick-btn right " ng-if="view_dvcook_info.is_picked=='false'" style="cursor: pointer" ng-click="pick_confirm_cook_order(view_dvcook_info)">To Pick</a>
+		<a  class="pick-btn right " ng-if="view_dvcook_info.is_picked=='true'" style="cursor: pointer" >PICKED</a>
+	</div>
+</div>
+</div>
+<!-- pickup details end here -->
+
+	
+
+
+<script type="text/javascript">
+$(".open-otp").click(function(){
+	$(".otp-popup").fadeIn();
+});
+
+$(".close-popup , .overlay").click(function(){
+	$(".otp-popup").fadeOut();
+});
+</script>
+
+</body>
+</html>

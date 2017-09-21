@@ -1,0 +1,536 @@
+<div ng-controller="user_register"  ng-cloak>
+
+
+
+
+	<link rel="stylesheet" href="plugin/price-ranger/css/1.css">
+	<link href="plugin/calendar/css/1.css" rel="stylesheet">
+	<link href="plugin/sumogallery/sumogallery.css" rel="stylesheet">
+
+	<div ng-include="'pages/popup/select-user.html'" ng-show="ask_user_type_show"></div>
+	<div class="detail-page" ng-init="captured_food_id_fetch()">
+
+	<div class=" common-header">
+	<div class="header" ng-controller="right_menu_controller">
+		<div class="container">
+			<span class="logo" ng-click="listing_redirect()" style="cursor: pointer"><img src="{{global_setting_detail_view.website_logo}}"></span>
+			<div ng-include="'pages/inc/right-menu.html'" class="right-menu-pannel"></div>
+		</div>
+
+		<div class="bread_ui">
+			<div class="container" ng-init="loc_val_cookies()">
+				<ul class="breadcrumbs">
+					<li class="list"><a href="#0" class="link">Home</a></li>
+					<li class="list"><a href="#/listing" class="link">{{loc_show}}</a></li>
+					<li class="list">{{food_name_breadcrumb_detail | capitalize}}</li>
+					
+					
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+		
+
+		<div class="container">
+				
+			<div class="full-detail">
+				<div class="set-padding">
+						<div class="topstyle">
+						<div class="food_provide"><span class="title">Food Partner : </span> {{food_partner_detail_show}}</div>
+						<a href="#/listing" class="back-to-list"> <i class="fa fa-caret-left"></i> Back To Listing</a>
+					</div>
+					<!-- left panel start here -->
+					<div class="left-panel">
+
+						<div class="seaTabs row">
+							<div class="seaTabs_switch row">
+								<div class="seaTabs_tab" ng-class="{seaTabs_switch_active: $index==0}" ng-repeat="(key,menu) in menu_view">
+									<span ng-repeat="(classkey, classprop) in menu">{{classkey}} Menu</span>
+								</div>
+							</div>
+
+							<div class="seaTabs_content">
+								<div class="seaTabs_item" ng-class="{seaTabs_content_active: $index==0}" ng-repeat="(key,menu) in menu_view">
+
+
+									<div class="tab-list active" ng-repeat="(classkey, classprop) in menu">
+
+										<div class="tab-data" ng-repeat="class in classprop">
+											<div class="tab-data-list">
+												<div class="detail-head">
+													<div class="coloum-div col-px-75 center">
+														<span class="thumb"><img ng-src="/uploads/cook_uploads/200_by_250/{{class.food_img[0].img_name}}"></span>
+													</div>
+													<div class="coloum-div">
+														<h5 class="name">{{class.food_name | capitalize}}
+															<i class="type"><img src="public/images/icon/veg.jpg" ng-if="class.food_type=='Vegetarian'"></i>
+															<i class="type"><img src="public/images/icon/non-veg.jpg" ng-if="class.food_type=='Non Vegetarian'"></i>
+														</h5>
+														<div class="cuisines">
+															<span class="subtext">Cuisines :</span>
+															<ul class="cuisine-list">
+																<li class="list" ng-repeat="cuisine in class.food_cuisine" ng-if="cuisine.status=='true'">{{cuisine.category_name}}</li>
+															</ul>
+														</div>
+													</div>
+
+													<div class="coloum-div center col-px-100">
+														<div class="qty-controller">
+															<!--<span class="button"  ng-click="decreaseItemCount_detail(class,classkey)">-</span>
+												<span class="qty-show">{{class.cart_qty}}</span>-->
+															<span class="button" ng-click="increaseItemCount_detail(class,classkey,class.cook_id,class.food_id)">+</span>
+														</div>
+													</div>
+
+													<div class="coloum-div col-px-50">
+														<div class="price-data">
+															<span class="price"> Rs. {{class.food_price_per_plate}}</span> 
+															<span class="act-for">Per Plate</span>
+														</div>
+													</div>
+												</div>
+												<div class="food-about">
+													<p>{{class.food_desc }}</p>
+
+
+												</div>
+												<div class="row">
+													<ul class="gallery">
+														<li class="list" ng-repeat="food_arr in class.food_img">
+															<img data-sgallery="group1" title="yup image is cool" data-full="{{food_arr.food_img_web}}" data-thumb="public/images/product/1.jpg"
+																src="{{food_arr.food_img_web}}">
+														</li>
+													</ul>
+												
+												<div class="calendar">
+													 <!--&nbsp;&nbsp;&nbsp; From: {{class.selected_date_from}} &nbsp;&nbsp;&nbsp;To : {{class.selected_date_to}}-->
+													<!--<p style="font-size: 12px;color:green">Available </p>-->
+														<!--<input class="input-box span2" value="02/16/12" data-date-format="mm/dd/yy" id="dp1" type="text" >-->
+														<!--<input type="text" id="dt" placeholder="date picker">
+
+													<div id="dd"></div>-->
+													
+													<datepicker class="" date-format="dd-MM-yyyy" datepicker-show="true"  date-min-limit="{{min_date_for_listing}}" >
+															<input type="text" class="input-box" id={{classkey}}{{class.food_id}} ng-model="dd.date_detail" ng-change="check_food_avail(class,classkey,class.food_id)" />
+														</datepicker>
+
+
+												</div>
+														
+					<!--<input class="input-box span2" value="02/16/12" data-date-format="mm/dd/yy" id="{{class.food_id}}" type="text" ng-click="detail_page_date(class.food_id)">
+									-->
+<!--<div class="calendar"></div>-->
+
+    
+
+													<div class="row">
+														<!--<div class="col-md-30 right">
+															<div class="total-rating">
+																<span class="number">4.5</span>
+																<span class="total-user">200 reviews</span>
+																<ul class="star-rating">
+																	<li class="star-list given"><i class="fa fa-star"></i></li>
+																	<li class="star-list given"><i class="fa fa-star"></i></li>
+																	<li class="star-list given"><i class="fa fa-star"></i></li>
+																	<li class="star-list given"><i class="fa fa-star"></i></li>
+																	<li class="star-list "><i class="fa fa-star"></i></li>
+																</ul>
+															</div>
+															<ul class="rating-distribution">
+																<li class="list">
+																	<span class="parameters">5 Star</span>
+																	<div class="meter-line">
+																		<span class="speed-up" style="width:10%;"></span>
+</div>
+<span class="number">2</span>
+</li>
+<li class="list">
+	<span class="parameters">4 Star</span>
+	<div class="meter-line">
+		<span class="speed-up" style="width:25%;"></span>
+</div>
+<span class="number">2</span>
+</li>
+<li class="list">
+	<span class="parameters">3 Star</span>
+	<div class="meter-line">
+		<span class="speed-up" style="width:25%;"></span>
+</div>
+<span class="number">2</span>
+</li>
+<li class="list">
+	<span class="parameters">2 Star</span>
+	<div class="meter-line">
+		<span class="speed-up" style="width:20%;"></span>
+</div>
+<span class="number">2</span>
+</li>
+<li class="list">
+	<span class="parameters">1 Star</span>
+	<div class="meter-line">
+		<span class="speed-up" style="width:20%;"></span>
+</div>
+<span class="number">2</span>
+</li>
+</ul>
+</div>-->
+
+<div class="col-md-100 left padding-right-15px">
+
+	
+	<span class="food-review-title">Total Food Review <i class="number">{{class.food_review.length}}</i> </span>
+	<ul class="review-list">
+		<li class="list" ng-repeat="review in class.food_review | limitTo:2">
+			<div class="div-coloum user-detail col-px-100 center">
+				<span class="initial-name color-a">V</span>
+				<span class="user-name">{{review.username}}</span>
+			</div>
+			<div class="div-coloum review-detail">
+				<h4 class="title">{{review.review_title}} <span class="date">{{review.date}}</span></h4>
+				<ul class="star-rating">
+
+					<div ng-if="review.review_rating=='1'">
+
+							<li class="star-list given"><i class="fa fa-star"></i></li>
+							<li class="star-list "><i class="fa fa-star"></i></li>
+							<li class="star-list "><i class="fa fa-star"></i></li>
+							<li class="star-list "><i class="fa fa-star"></i></li>
+							<li class="star-list "><i class="fa fa-star"></i></li>
+					</div>
+					<div ng-if="review.review_rating=='2'">
+
+							<li class="star-list given"><i class="fa fa-star"></i></li>
+							<li class="star-list given"><i class="fa fa-star"></i></li>
+							<li class="star-list "><i class="fa fa-star"></i></li>
+							<li class="star-list "><i class="fa fa-star"></i></li>
+							<li class="star-list "><i class="fa fa-star"></i></li>
+
+					</div>
+					<div ng-if="review.review_rating=='3'">
+
+							<li class="star-list given"><i class="fa fa-star"></i></li>
+							<li class="star-list given"><i class="fa fa-star"></i></li>
+							<li class="star-list given"><i class="fa fa-star"></i></li>
+							<li class="star-list "><i class="fa fa-star"></i></li>
+							<li class="star-list "><i class="fa fa-star"></i></li>
+
+					</div>
+					<div ng-if="review.review_rating=='4'">
+
+							<li class="star-list given"><i class="fa fa-star"></i></li>
+							<li class="star-list given"><i class="fa fa-star"></i></li>
+							<li class="star-list given"><i class="fa fa-star"></i></li>
+							<li class="star-list given"><i class="fa fa-star"></i></li>
+							<li class="star-list "><i class="fa fa-star"></i></li>
+
+					</div>
+					<div ng-if="review.review_rating=='5'">
+
+							<li class="star-list given"><i class="fa fa-star"></i></li>
+							<li class="star-list given"><i class="fa fa-star"></i></li>
+							<li class="star-list given"><i class="fa fa-star"></i></li>
+							<li class="star-list given"><i class="fa fa-star"></i></li>
+							<li class="star-list given"><i class="fa fa-star"></i></li>
+
+							
+
+					</div>
+					
+				</ul>
+				<p class="comment">{{review.review_desc | limitTo : 42}} </p>
+				
+			</div>
+			
+		</li>
+		<div class="load-more red" ng-click="review_panel_show(class.food_review)" ng-if="class.food_review.length>2">View More</div>
+
+			<span class="no-review-found" ng-show="class.food_review.length<1">
+			No Review Found
+			</span>
+	</ul>
+	<!--<a href="#0" class="load-more">View More</a>-->
+
+
+</div>
+
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+</div>
+</div>
+</div>
+
+
+</div>
+<!-- left panel end here -->
+
+
+
+<div class="all-review-popup" ng-show="review_all_panel_show">
+    <div class="design-box">
+            <span class="main-title">All Reviews</span>
+        <span class="close-popup" ng-click="review_panel_close()"><i class="fa fa-close"></i></span>
+        <div class="display-setting">
+            <ul class="review-list">
+                <li class="list" ng-repeat="review in review_show_all">
+                    <div class="div-coloum user-detail col-px-150 center">
+                        <span class="initial-name color-a">V</span>
+						<span class="user-name">{{review.username}}</span>
+                    </div>
+                    <div class="div-coloum review-detail">
+						<h4 class="title">{{review.review_title}} <span class="date">{{review.date}}</span></h4>
+                        <ul class="star-rating" ng-if="review.review_rating=='1'">
+                            <li class="star-list given"><i class="fa fa-star"></i></li>
+                            <li class="star-list "><i class="fa fa-star"></i></li>
+                            <li class="star-list "><i class="fa fa-star"></i></li>
+                            <li class="star-list "><i class="fa fa-star"></i></li>
+                            <li class="star-list "><i class="fa fa-star"></i></li>
+                        </ul>
+						  <ul class="star-rating" ng-if="review.review_rating=='2'">
+                            <li class="star-list given"><i class="fa fa-star"></i></li>
+                            <li class="star-list given"><i class="fa fa-star"></i></li>
+                            <li class="star-list "><i class="fa fa-star"></i></li>
+                            <li class="star-list "><i class="fa fa-star"></i></li>
+                            <li class="star-list "><i class="fa fa-star"></i></li>
+                        </ul>
+						  <ul class="star-rating" ng-if="review.review_rating=='3'">
+                            <li class="star-list given"><i class="fa fa-star"></i></li>
+                            <li class="star-list given"><i class="fa fa-star"></i></li>
+                            <li class="star-list given"><i class="fa fa-star"></i></li>
+                            <li class="star-list "><i class="fa fa-star"></i></li>
+                            <li class="star-list "><i class="fa fa-star"></i></li>
+                        </ul>
+						  <ul class="star-rating" ng-if="review.review_rating=='4'">
+                            <li class="star-list given"><i class="fa fa-star"></i></li>
+                            <li class="star-list given"><i class="fa fa-star"></i></li>
+                            <li class="star-list given"><i class="fa fa-star"></i></li>
+                            <li class="star-list given"><i class="fa fa-star"></i></li>
+                            <li class="star-list "><i class="fa fa-star"></i></li>
+                        </ul>
+						  <ul class="star-rating" ng-if="review.review_rating=='5'">
+                            <li class="star-list given"><i class="fa fa-star"></i></li>
+                            <li class="star-list given"><i class="fa fa-star"></i></li>
+                            <li class="star-list given"><i class="fa fa-star"></i></li>
+                            <li class="star-list given"><i class="fa fa-star"></i></li>
+                            <li class="star-list given"><i class="fa fa-star"></i></li>
+                        </ul>
+                        <p class="comment">{{review.review_desc}}</p>
+                    </div>
+                </li>
+                <!--<li class="list">
+                    <div class="div-coloum user-detail col-px-150 center">
+                        <span class="initial-name color-b">V</span>
+                        <span class="user-name">Vinay Sudan</span>
+                    </div>
+                    <div class="div-coloum review-detail">
+                        <h4 class="title">Perfect Product in range <span class="date">12-08-2016</span></h4>
+                        <ul class="star-rating">
+                            <li class="star-list given"><i class="fa fa-star"></i></li>
+                            <li class="star-list given"><i class="fa fa-star"></i></li>
+                            <li class="star-list given"><i class="fa fa-star"></i></li>
+                            <li class="star-list given"><i class="fa fa-star"></i></li>
+                            <li class="star-list "><i class="fa fa-star"></i></li>
+                        </ul>
+                        <p class="comment">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. </p>
+                    </div>
+                </li>
+                <li class="list">
+                    <div class="div-coloum user-detail col-px-150 center">
+                        <span class="initial-name color-c">V</span>
+                        <span class="user-name">Vinay Sudan</span>
+                    </div>
+                    <div class="div-coloum review-detail">
+                        <h4 class="title">Perfect Product in range <span class="date">12-08-2016</span></h4>
+                        <ul class="star-rating">
+                            <li class="star-list given"><i class="fa fa-star"></i></li>
+                            <li class="star-list given"><i class="fa fa-star"></i></li>
+                            <li class="star-list given"><i class="fa fa-star"></i></li>
+                            <li class="star-list given"><i class="fa fa-star"></i></li>
+                            <li class="star-list "><i class="fa fa-star"></i></li>
+                        </ul>
+                        <p class="comment">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. </p>
+                    </div>
+                </li>
+                <li class="list">
+                    <div class="div-coloum user-detail col-px-150 center">
+                        <span class="initial-name color-c">V</span>
+                        <span class="user-name">Vinay Sudan</span>
+                    </div>
+                    <div class="div-coloum review-detail">
+                        <h4 class="title">Perfect Product in range <span class="date">12-08-2016</span></h4>
+                        <ul class="star-rating">
+                            <li class="star-list given"><i class="fa fa-star"></i></li>
+                            <li class="star-list given"><i class="fa fa-star"></i></li>
+                            <li class="star-list given"><i class="fa fa-star"></i></li>
+                            <li class="star-list given"><i class="fa fa-star"></i></li>
+                            <li class="star-list "><i class="fa fa-star"></i></li>
+                        </ul>
+                        <p class="comment">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. </p>
+                    </div>
+                </li>
+                <li class="list">
+                    <div class="div-coloum user-detail col-px-150 center">
+                        <span class="initial-name color-c">V</span>
+                        <span class="user-name">Vinay Sudan</span>
+                    </div>
+                    <div class="div-coloum review-detail">
+                        <h4 class="title">Perfect Product in range <span class="date">12-08-2016</span></h4>
+                        <ul class="star-rating">
+                            <li class="star-list given"><i class="fa fa-star"></i></li>
+                            <li class="star-list given"><i class="fa fa-star"></i></li>
+                            <li class="star-list given"><i class="fa fa-star"></i></li>
+                            <li class="star-list given"><i class="fa fa-star"></i></li>
+                            <li class="star-list "><i class="fa fa-star"></i></li>
+                        </ul>
+                        <p class="comment">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. </p>
+                    </div>
+                </li>
+                <li class="list">
+                    <div class="div-coloum user-detail col-px-150 center">
+                        <span class="initial-name color-c">V</span>
+                        <span class="user-name">Vinay Sudan</span>
+                    </div>
+                    <div class="div-coloum review-detail">
+                        <h4 class="title">Perfect Product in range <span class="date">12-08-2016</span></h4>
+                        <ul class="star-rating">
+                            <li class="star-list given"><i class="fa fa-star"></i></li>
+                            <li class="star-list given"><i class="fa fa-star"></i></li>
+                            <li class="star-list given"><i class="fa fa-star"></i></li>
+                            <li class="star-list given"><i class="fa fa-star"></i></li>
+                            <li class="star-list "><i class="fa fa-star"></i></li>
+                        </ul>
+                        <p class="comment">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. </p>
+                    </div>
+                </li>
+                <li class="list">
+                    <div class="div-coloum user-detail col-px-150 center">
+                        <span class="initial-name color-c">V</span>
+                        <span class="user-name">Vinay Sudan</span>
+                    </div>
+                    <div class="div-coloum review-detail">
+                        <h4 class="title">Perfect Product in range <span class="date">12-08-2016</span></h4>
+                        <ul class="star-rating">
+                            <li class="star-list given"><i class="fa fa-star"></i></li>
+                            <li class="star-list given"><i class="fa fa-star"></i></li>
+                            <li class="star-list given"><i class="fa fa-star"></i></li>
+                            <li class="star-list given"><i class="fa fa-star"></i></li>
+                            <li class="star-list "><i class="fa fa-star"></i></li>
+                        </ul>
+                        <p class="comment">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. </p>
+                    </div>
+                </li>
+                <li class="list">
+                    <div class="div-coloum user-detail col-px-150 center">
+                        <span class="initial-name color-c">V</span>
+                        <span class="user-name">Vinay Sudan</span>
+                    </div>
+                    <div class="div-coloum review-detail">
+                        <h4 class="title">Perfect Product in range <span class="date">12-08-2016</span></h4>
+                        <ul class="star-rating">
+                            <li class="star-list given"><i class="fa fa-star"></i></li>
+                            <li class="star-list given"><i class="fa fa-star"></i></li>
+                            <li class="star-list given"><i class="fa fa-star"></i></li>
+                            <li class="star-list given"><i class="fa fa-star"></i></li>
+                            <li class="star-list "><i class="fa fa-star"></i></li>
+                        </ul>
+                        <p class="comment">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. </p>
+                    </div>
+                </li>-->
+            </ul>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<div class="right-panel">
+	<!-- <div class="cook-availiblity">
+		<span class="head"><i class="status"><img src="public/images/icon/online.png" id="avail_status"></i> Selected Food Will Be Displayed Here</span>
+	</div> -->
+
+	<div class="active-food-item">
+		<div class="image-display">
+			<span class="active-date">Selected Date : {{dd.date | date:dd-MM-yyyy }}</span>
+			<img src="{{food_highlight_show.food_img[0].food_img_web}}">
+		
+		</div>
+		<div class="data">
+			<h5 class="name ng-binding">{{food_highlight_show.food_name | capitalize}}
+					<i class="type"><img src="public/images/icon/veg.jpg" ng-if="food_highlight_show.food_type=='Vegetarian'"></i>
+					<i class="type"><img src="public/images/icon/non-veg.jpg" ng-if="food_highlight_show.food_type=='Non Vegetarian'"></i>
+												
+			</h5>
+			<div class="cuisines">
+				<span class="subtext">Cuisines :</span>
+				<ul class="cuisine-list">
+					<li class="list"  ng-repeat="cuisine in food_highlight_show.cuisine_list" ng-if="cuisine.status=='true'">{{cuisine.category_name}}</li>
+				
+				</ul>
+			</div>
+			<div class="price-data">
+				<span class="price ng-binding">Rs. {{food_highlight_show.food_price_per_plate}} </span> 
+				<span class="act-for">Per Plate</span>
+			</div>
+			<span class="button" ng-click="increaseItemCount_detail_2(food_highlight_show)">+</span>
+		</div>
+	</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+<div ng-include="'pages/inc/footer.html'"></div>
+<script src="plugin/tabs/js/sea.tabs.js"></script>
+<script src="plugin/calendar/js/1.js"></script> 
+
+<script src="plugin/sumogallery/jquery.sumogallery.js"></script>
+
+<script type="text/javascript">
+
+	$(".tab-list .option-menu").click(function () {
+		$(this).next(".tab-data").slideToggle();
+	});
+
+
+
+	$(".review-form-popup .close-popup").click(function () {
+		$(this).parents(".review-form-popup").fadeOut(200);
+	});
+
+	$(".review-btn").click(function () {
+		$(".review-form-popup").fadeIn();
+	});
+	
+
+
+</script>
+<!--<script>
+$('#dd').calendar({
+
+  trigger: '#dt',
+
+});
+  </script>-->
+
+</div>

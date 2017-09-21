@@ -1,0 +1,74 @@
+<div ng-controller="cook_register">
+
+<div ng-include="'pages/inc/header.html'" class="common-header" ></div>
+
+<div class="container">
+	<div class="user-join-page w-shadow">
+		<div class="form-display">
+			<h2 class="page-name">Cook Account
+			<p class="caption">We will send you a link to reset your password. Enter Contact No.</p>
+			</h2>
+			<div class="activity">
+				<ul class="buttons">
+					<li class="list active"><a href="#/cook_login" class="link">Login</a></li>
+					<li class="list"><a href="#/cook_create" class="link">Sign up</a></li>
+				</ul>
+
+				<p class="caption">Enter your Contact No. to <b>get your password</b></p>
+				<div class="form-field">
+					<div class="field-fillup">
+						<label class="label required">Registered Contact No.</label>
+						<input type="text" id="mobile_no" name="" class="input-box" placeholder="Your Contact No." ng-model="forget_cook_detail.cook_contact_no">
+					</div>
+				</div>
+
+				<div class="switch-btn">
+					<div class="list padding-20px"><input type="submit" name="" class="submit-btn" value="Retrieve My Password" ng-click="forget_cook_password(forget_cook_detail)"></div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<div ng-include="'pages/inc/footer.html'"></div>
+
+</div>
+
+
+<div class="otp-popup" ng-controller="cook_register">
+    <div class="design-box">
+        <span class="close-popup" ><i class="fa fa-close"></i></span>
+        <div class="display-setting">
+            <h4 class="title">Verify OTP</h4>
+            <span class="caption">Enter Your 6 Digit One Time Password</span>
+
+            <div class="input-div margin-top-30px">
+                <input type="text" name="" class="input-box" placeholder="Enter OTP" ng-model="cook_reg_otp.otp">
+                <span class="resend" ng-click="resend_cook_otp()">Resend OTP</span>
+            </div>
+			<div class="revert-msg" ng-show="resend_otp">
+                <span class="error" style="color: green" >OTP Successfully Resend</span><!-- 
+                <span class="error">An OTP sent to your mobile phone</span> -->
+            </div>
+			 <div class="revert-msg" ng-show="empty_otp">
+                <span class="error" >Couldn't Be Empty.</span><!-- 
+                <span class="error">An OTP sent to your mobile phone</span> -->
+            </div>
+            <div class="revert-msg" ng-show="incorr_otp">
+                <span class="error" >Incorrect OTP.</span><!-- 
+                <span class="error">An OTP sent to your mobile phone</span> -->
+            </div>
+            <ul class="buttons">
+                <li class="list"></li>
+                <li class="list"><input type="submit" name="" class="submit-btn" value="OK" ng-click="verify_cook_otp_forget_pass(cook_reg_otp)"></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>	
+$(".close-popup").click(function(){
+    $(".otp-popup").hide();
+});
+</script>

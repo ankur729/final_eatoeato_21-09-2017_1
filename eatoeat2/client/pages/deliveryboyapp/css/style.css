@@ -1,0 +1,158 @@
+body{font-family: 'arial';/* font-family: "Trebuchet MS", Helvetica, sans-serif;*/}
+
+.main-container , .row{width: 100%; float: left;}
+.container {width: 1100px; max-width: 100%;}
+.sub-container {width: 900px; max-width: 100%;}
+
+
+.fancy-radio-label , .fancy-checkbox-label {line-height: 20px; color: #595959; display: inline-block;cursor: pointer;position: relative;padding-left: 25px; font-size: 13px;}
+.fancy-radio , .fancy-checkbox {display: none;}
+.fancy-radio-label:before , .fancy-checkbox-label:before {content: "";display: inline-block;width: 16px;height: 16px;margin-right: 10px;position: absolute;left: 0;top: 1px;background-color: #fff;border: 1px solid #ccc;}
+.fancy-radio-label:before {border-radius: 100%;}
+.fancy-checkbox-label {margin-bottom: 10px; width: 100%;}
+.fancy-checkbox-label:before {}
+.fancy-radio:checked + .fancy-radio-label:before {border-color: #0ba2db; background: url('../images/icon/radio-check.png') no-repeat 2px center;color: #f3f3f3;font-size: 30px;text-align: center;line-height: 18px;}
+.fancy-checkbox:checked + .fancy-checkbox-label:before {background: url('../images/icon/checked.png') no-repeat  50% 50%;text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);font-size: 15px;color: #f3f3f3;text-align: center;line-height: 15px;}
+.fancy-checkbox-label .number-of-item {float: right; font-size: 12px; color: #AEAEAE;}
+
+
+.input-box{width: 100%; float: left; padding: 7px; height: 32px; border: 1px solid #ccc; background: #fff;}
+.submit-btn {background: #7bc141; color: #fff; padding: 7px 15px; border: 1px solid #5f9830; cursor: pointer; font-size: 14px;}
+.submit-btn:hover {background: #333; border-color: #000;}
+
+
+.select-option {  height: 32px; color: #7E7E7E; cursor: pointer; border: 1px solid #ccc; padding: 5px; width: 100%; -webkit-appearance:none; appearance:none; -moz-appearance: none; background-color: #ffffff; background-position: right center; background-repeat: no-repeat;  text-indent: 0.01px; text-overflow: "";  width: 100%; background: #fff url("../images/icon/drop.png") no-repeat scroll 95% 50%;}
+.select-option option {border: none;}
+.select-option optgroup {font-size: 12px; color: #333; font-style: normal; padding:3px 0px; font-family: arial;}
+.bg-grey{background: #efefef;}
+
+/* -- header start here -- */
+
+
+
+.login-page {width: 100%; float: left; height: 100%; position: fixed; top: 0px; left: 0px; right: 0px; bottom: 0px; background: url(../images/assets/bg/login.png);}
+.login-page .management-login {width: 350px; max-width: 100%; top: 0px; left: 0px; right: 0px; bottom: 0px; position: absolute; margin: auto; max-height: 400px;}
+.login-page .management-login .logo {width: 100%; float: left; text-align: center; background:; margin-bottom: 15px;}
+
+.login-page .management-login .form-div {border-radius: 3px; width: 100%; float: left; background: #fff;  box-shadow: 0 1px 3px rgba(0,0,0,.13); -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.13);}
+.login-page .management-login .form-div .page-name {float: left; width: 100%;text-align: center; padding: 15px 0px; border-bottom: 5px solid #6cb133; font-size: 18px;  background: #7bc141; color: #fff;}
+
+.login-page .management-login .form-div .input-fields{width: 100%; float: left; padding: 20px;}
+.login-page .management-login .form-div .input-fields .list {width: 100%; float: left; margin-bottom: 15px;}
+.login-page .management-login .form-div .input-fields .list .title {width: 100%; float: left; font-size: 12px; color: #9e9e9e; margin-bottom: 5px;}
+.login-page .management-login .form-div .input-fields .list .input-box{height: 40px; background: #fbfbfb; box-shadow: inset 0 1px 2px rgba(0,0,0,.07);}
+.login-page .management-login .form-div .input-fields .list .input-box:focus {border-color:#000; }
+.login-page .management-login .form-div .input-fields .list .remember {float: left; font-size: 12px; line-height: 20px; cursor: pointer; padding: 7px 0px;}
+.login-page .management-login .form-div .input-fields .list .remember .checkbox {float: left; margin-right: 10px;}
+.login-page .management-login .form-div .input-fields .list .remember label {float: left; cursor: pointer;}
+.login-page .management-login .form-div .input-fields .list .back-btn {float: left; font-size: 12px; color: #888; margin-top: 5px;}
+.login-page .management-login .form-div .input-fields .list .back-btn:hover {color: #000;}
+.login-page .management-login .form-div .input-fields .list .submit-btn {background: #333; border-color: #333;}
+.login-page .management-login .form-div .input-fields .list .submit-btn:hover {background: #000;}
+
+.login-page .management-login .forgot-btn {color: #888; font-size: 12px;}
+.login-page .management-login .forgot-btn:hover {color: #333;}
+
+
+.left-menu .close-btn {position: absolute; top: 0px; right: 0px; padding: 10px 15px; background: #1e2c1e; color: #fff; font-size: 14px; width: 100%; text-align: right;}
+.left-menu {display: none; position: fixed; top: 0px; left: 0px; height: 100%; width: 100%; z-index: 99; background: rgba(0, 0,0, 0.5);}
+.left-menu .open-menu {float: left; position: absolute; left: 0px; top: 0px; width: 75%; background: #111811; height: 100%;}
+.left-menu .open-menu .logo {float: left; width: 100%; text-align: center; margin: 15px 0px;}
+.left-menu .open-menu .logo img {display: block; max-width: 100%;}
+.left-menu .open-menu .menu-list {float: left; width: 100%; background: #1e2c1e;}
+.left-menu .open-menu .menu-list .list {float: left; width: 100%; border-bottom: 1px solid #111811;}
+.left-menu .open-menu .menu-list .list .link {float: left; width: 100%; padding: 20px 20px; color: #fff; font-size: 14px;}
+.left-menu .open-menu .details-show {float: left; width: 100%; padding: 20px;}
+.left-menu .open-menu .details-show h1{color: #fff; float: left; width: 100%; font-size: 24px;}
+.left-menu .open-menu .details-show span{color: #d2f5d4; float: left; width: 100%; font-size: 14px; margin-top: 3px;}
+.left-menu .open-menu .copyright{background: #1e2c1e; float: left; width: 100%; font-size: 13px; padding: 20px; margin-top: 50px; color: #96b096;}
+
+
+
+.header {position: relative; float: left;width: 100%; background: #59ac3d; display: table;}
+.header .toggle-menu {color: #fff; /*border-right: 1px solid #93d17e;*/ cursor: pointer; padding: 15px; width: 45px; display: table-cell; vertical-align: middle;}
+.header .toggle-menu i {display: block;}
+.header .title {display: table-cell; font-size: 18px; color: #fff; vertical-align: middle; padding-left: 10px;}
+.header .search-toggle {display: table-cell; color: #d2f3c7; cursor: pointer; vertical-align: middle; width: 50px; text-align: center;}
+.header .search-toggle i {display: block;}
+
+.header .search-show {width: 100%; height: 100%;  position: absolute; top: 0px; left: 0px; display: none;}
+.header .search-div {padding: 7px; padding: 7px 20px; padding: 7px 20px; width: 100%; height: 100%; background: #fff; display: table;}
+.header .search-div .coloum-div {display: table-cell; vertical-align: middle;}
+.header .search-div .search-back{height: 32px; display: block; line-height: 32px; cursor: pointer;}
+
+.header .search-div .input-box {border: none;}
+
+
+.tab-slider--nav {width: 100%; float: left; /*! margin-bottom: 20px; */ }
+.tab-slider--tabs {float: left; width: 100%; display: table; margin: 0 auto; list-style: none; position: relative; overflow: hidden; background: #3c3838; height: 35px; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+.tab-slider--tabs .slide-trigger {background: #000; height: 100%; position: absolute; top: 0; left: 0; -webkit-transition: all 250ms ease-in-out; transition: all 250ms ease-in-out;}
+.tab-slider--trigger { font-size: 12px; font-weight: bold; color: #345F90; text-transform: uppercase; text-align: center; position: relative; z-index: 2; cursor: pointer; display: table-cell; -webkit-transition: color 250ms ease-in-out; transition: color 250ms ease-in-out; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+.tab-slider--trigger a.active {color: #fff;}
+.tab-slider--trigger a {width: 100%; text-align: center; padding: 11px 0px; float: left; color: #eaeaea;}
+.tab-slider--body { margin-bottom: 20px; float: left;width: 100%;}
+.tab-slider--trigger a .number {display: table; height: 30px; width: 30px; background: #787575; line-height: 30px; border-radius: 100%; margin-bottom: 10px; }
+
+
+
+
+.pickup-list {width: 100%; float: left; margin-top: 10px;}
+.pickup-list .list {display: table; float: left;width: 100%; padding: 15px 20px; box-shadow: 1px 1px 5px #ccc; background: #fff; margin: 2px 0px;}
+.pickup-list .list .coloum-div {display: table-cell;vertical-align: middle; }
+.pickup-list .list .coloum-div .link {float: left;}
+.pickup-list .list .coloum-div .pick-btn {display: table; padding: 10px 15px; border-radius: 3px; background: #333; font-size: 12px;  color: #fff;}
+.pickup-list .list .coloum-div .pick-btn:hover {background: #59ac3d;}
+.pickup-list .list .coloum-div .pick-btn.active {background: #59ac3d;}
+.pickup-list .list .coloum-div .pick-btn.returned {background: #ac3d3d;}
+.pickup-list .list .coloum-div .od-id {float: left; width: 100%; font-size: 12px; color: #a5a5a5; margin-top: 3px;}
+.pickup-list .list .coloum-div .location {font-size: 14px; color: #888;}
+.pickup-list .list .coloum-div .date {color: #333;}
+
+.pickup-details {float: left; width: 100%;}
+.pickup-details .map {float: left; width: 100%;/* border: 10px solid #fff; box-shadow: 1px 1px 5px #ccc;*/ border-bottom: 1px solid #ccc;}
+.pickup-details .pickup-data {float: left; width: 100%; padding: 15px;}
+.pickup-details .pickup-data .cook-info {float: left; width: 100%; display: table; margin-bottom: 15px;}
+.pickup-details .pickup-data .cook-info .coloum-div {display: table-cell;vertical-align: bottom;}
+.pickup-details .pickup-data  .title {float: left; width: 100%; font-size: 14px; margin-bottom: 5px; color: #f25656; text-transform: uppercase; font-weight: bold;}
+.pickup-details .pickup-data .cook-info .data {float: left; width: 100%; font-size: 13px; color: #333;}
+.pickup-details .pickup-data .order-number {float: left; width: 48%; text-align: center; padding: 10px 15px; background: #F25656; border-radius: 3px; font-size: 13px; color: #fff;}
+.pickup-details .pick-btn {float: right; width: 48%; text-align: center; display: table; padding: 10px 15px; border-radius: 3px; background: #333; font-size: 14px; color: #fff;}
+.pickup-details .pick-btn:hover {background: #59ac3d;}
+.pickup-details .pick-btn.active {background: #59ac3d;}
+
+
+
+.delivery-list { padding: 10px 15px; float: left; width: 100%;}
+.delivery-list .title{float: left; width: 100%; font-size: 14px; color: #f25656; margin-bottom: 5px; text-transform: uppercase; font-weight: bold;}
+.delivery-list .title b {color: #282828; text-transform: none; margin-left: 5px;}
+.delivery-list .detail-list {float: left; width: 100%; word-break: break-all; margin-bottom: 15px;}
+.delivery-list .detail-list .list-li {display: table; float: left; width: 100%; font-size: 12px;}
+.delivery-list .detail-list .list-li .data {display: table-cell; font-size: 12px; color: #626262; line-height: 18px;}
+.delivery-list .detail-list .list-li .label {display: table-cell; font-size: 12px; color: #626262; font-weight: bold;}
+.delivery-list .detail-list .list-li .label:after {content: ":"; float: right; margin-right: 10px;}
+
+.delivery-list .delivery-btn {display: table; padding: 10px 25px; background: #333; color: #fff; font-size: 13px; border-radius: 3px;}
+.delivery-list .delivery-btn:after {background: #59ac3d;}
+.delivery-list .delivery-btn.active {background: #59ac3d;}
+
+.col-px-125 {width: 125px;}
+
+
+.profile-detail-page {float: left; width: 100%;}
+.profile-detail-page .delivery-list .detail-list .list-li {margin-bottom: 10px;}
+.profile-detail-page .delivery-list {margin-top: 50px;}
+.profile-detail-page .delivery-list .title {margin-bottom: 20px; font-size: 18px;}
+
+
+.otp-popup {display: none; position: fixed;z-index: 99; top: 0px; left: 0px; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7);}
+.otp-popup .inner-design {position: absolute; top: 0; right: 0; bottom: 0; left: 0; background: #fff;  width: 100%; height: 250px; margin:  auto; padding: 20px;}
+.otp-popup .inner-design .title {float: left;margin-top: 30px; width: 100%; text-align: center; font-size: 18px; font-weight: bold; margin-bottom: 20px;}
+.otp-popup .inner-design .input-div {float: left; width: 100%; text-align: center;}
+.otp-popup .inner-design .input-div .input-box {padding: 15px; height: 50px; text-align: center; font-size: 18px;}
+.otp-popup .inner-design .input-div .input-box:focus{border-color: #000;}
+.otp-popup .inner-design .input-div .submit-btn {padding: 10px; background: #333;border-color: #000;}
+
+.otp-popup .close-popup {position: absolute; right: 20px; cursor: pointer; top: 15px; padding: 7px 10px; border: 1px solid #000; color: #000; border-radius: 100%; font-size: 12px;}
+.otp-popup .close-popup:hover {background: #000; color: #fff;}
+
+.overlay {width: 100%; height: 100%; position: absolute; top: 0px; left: 0px; z-index: -1;}

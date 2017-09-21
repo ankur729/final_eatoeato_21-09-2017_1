@@ -1,0 +1,175 @@
+
+<div class="main-container dashboard" ng-controller="delivery_boy_controller" ng-init="show_drop_order_info()">
+
+
+
+	<div class="delivery-panel">
+		<div class="otp-popup">
+			<div class="inner-design">
+				<span class="close-popup"><i class="fa fa-close"></i></span>
+				<span class="title">Enter Delivery Code</span>
+				<div class="input-div"><input type="text" name="" id="dropcode" class="input-box" placeholder="Enter Delivery Code"></div>
+				<div class="input-div margin-top-20px"><input type="submit" name="" ng-click="drop_confirm()" class="submit-btn" value="Submit"></div>
+			</div>
+		</div>
+	</div>
+
+
+<!-- header start here -->
+<div class="delivery-panel">
+	<div class="header">
+		<a href="#/deliveryboy/drop" class="toggle-menu"><i class="fa fa-long-arrow-left"></i></a>
+		<h2 class="title">Drop Details</h2>
+	</div>
+</div>
+<!-- header end here -->
+
+<!-- pickup details start here -->
+
+<div class="delivery-panel">
+
+<div class="pickup-details">
+	<div class="map"><iframe src="" id="mapcanvas" width="100%" height="350" frameborder="0" style="border:0" allowfullscreen></iframe></div>
+
+<div class="delivery-panel">
+
+	<div class="delivery-list">
+		<h6 class="title">User Details </h6>
+		<ul class="detail-list">
+			<li class="list-li">
+				<span class="label col-px-125">User Name</span>
+				<span class="data ng-binding">{{view_dvuser_info.items[0].username}}</span>
+			</li>
+			<li class="list-li">
+				<span class="label col-px-125">Mobile</span>
+				<span class="data ng-binding">{{view_dvuser_info.items[0].addr_contact}}</span>
+			</li>
+			<li class="list-li">
+				<span class="label col-px-125">Location</span>
+				<span class="data ng-binding">{{view_dvuser_info.items[0].addr_info}}</span>
+			</li>
+			<li class="list-li">
+				<span class="label col-px-125">Delivery Time</span>
+				<span class="data ng-binding"> {{view_dvuser_info.items[0].order_date}} | {{view_dvuser_info.items[0].delivery_time }}</span>
+			</li>
+		</ul>
+
+		<a  class="delivery-btn " style="cursor: pointer" ng-click="drop_confirm_user_order2()">To Drop</a>
+	</div>
+</div>
+
+	<div class="delivery-list">
+		<h6 class="title">Order Details </h6>
+		<ul class="detail-list">
+			<li class="list-li">
+				<span class="label col-px-125">Order ID</span>
+				<span class="data ng-binding">{{view_dvuser_info.order_id }}</span>
+			</li>
+			<li class="list-li">
+				<span class="label col-px-125">Total</span>
+				<span class="data ng-binding"> Rs. {{view_dvuser_info.grand_total }} </span>
+			</li>
+			<li class="list-li">
+				<span class="label col-px-125">Payment Mode</span>
+				<span class="data ng-binding">{{view_dvuser_info.items[0].pay_mode | uppercase }}</span>
+			</li>
+<!--
+			<li class="list-li">
+				<span class="label col-px-125">Delivery By</span>
+				<span class="data ng-binding">Service Center (North Delhi)</span>
+			</li>-->
+		</ul>
+	</div>
+
+
+	<div class="delivery-list">
+		<h6 class="title">Food Details </h6>
+		<ul class="detail-list" ng-repeat="item in view_dvuser_info.items">
+			<li class="list-li">
+				<span class="label col-px-125">Food Name</span>
+				<span class="data ng-binding" ng-if="item.food_type=='Vegetarian'"><img src="http://eatoeato.com:3000/public/images/icon/veg.jpg" class="left margin-right-5px">{{item.food_name}}</span>
+				<span class="data ng-binding" ng-if="item.food_type=='Non Vegetarian'"><img src="http://eatoeato.com:3000/public/images/icon/non-veg.jpg" class="left margin-right-5px">{{item.food_name}}</span>
+			</li>
+			<li class="list-li">
+				<span class="label col-px-125">Amount | QTY</span>
+				<span class="data ng-binding">Rs. {{item.food_price}} | {{item.food_qty}} </span>
+			</li>
+		</ul>
+
+		<!--<ul class="detail-list">
+			<li class="list-li">
+				<span class="label col-px-125">Food Name</span>
+				<span class="data ng-binding"><img src="http://eatoeato.com:3000/public/images/icon/veg.jpg" class="left margin-right-5px"> Moong Daal Halwa</span>
+			</li>
+			<li class="list-li">
+				<span class="label col-px-125">Amount | QTY</span>
+				<span class="data ng-binding">Rs. 150 | 2 </span>
+			</li>
+		</ul>
+
+
+		<ul class="detail-list">
+			<li class="list-li">
+				<span class="label col-px-125">Food Name</span>
+				<span class="data ng-binding"><img src="http://eatoeato.com:3000/public/images/icon/non-veg.jpg" class="left margin-right-5px"> Moong Daal Halwa</span>
+			</li>
+			<li class="list-li">
+				<span class="label col-px-125">Amount | QTY</span>
+				<span class="data ng-binding">Rs. 150 | 2 </span>
+			</li>
+		</ul>
+		<ul class="detail-list">
+			<li class="list-li">
+				<span class="label col-px-125">Food Name</span>
+				<span class="data ng-binding"><img src="http://eatoeato.com:3000/public/images/icon/veg.jpg" class="left margin-right-5px"> Moong Daal Halwa</span>
+			</li>
+			<li class="list-li">
+				<span class="label col-px-125">Amount | QTY</span>
+				<span class="data ng-binding">Rs. 150 | 2 </span>
+			</li>
+		</ul>-->
+	</div>
+
+
+	<div class="delivery-list">
+		<h6 class="title">Cook Details </h6>
+		<ul class="detail-list">
+			<li class="list-li">
+				<span class="label col-px-125">Cook Name</span>
+				<span class="data ng-binding">{{view_dvuser_info.cook_name}}</span>
+			</li>
+			<li class="list-li">
+				<span class="label col-px-125">Mobile</span>
+				<span class="data ng-binding">{{view_dvuser_info.cook_contact}}</span>
+			</li>
+			<li class="list-li">
+				<span class="label col-px-125">Location</span>
+				<span class="data ng-binding"> {{view_dvuser_info.landmark}}</span>
+			</li>
+			<!--<li class="list-li">
+				<span class="label col-px-125">Pickup Time</span>
+				<span class="data ng-binding"> 09 Aug | 12am</span>
+			</li>-->
+		</ul>
+	</div>
+
+</div>
+</div>
+<!-- pickup details end here -->
+
+	
+</div>
+<script type="text/javascript">
+
+	function popupOpen() {
+		$(".otp-popup").fadeIn();
+	};
+
+	// $(".open-otp").click(function () {
+	// 	$(".otp-popup").fadeIn();
+	// });
+
+	$(".close-popup , .overlay").click(function () {
+		$(".otp-popup").fadeOut();
+	});
+</script>

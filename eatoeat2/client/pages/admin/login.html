@@ -1,0 +1,37 @@
+<div class="main-container dashboard admin" ng-controller="admin_controller">
+
+<div class="main-container login-page">
+	<div class="container">
+		<div class="management-login">
+			<div class="logo"><a href=""></a><img src="pages/admin/images/logo.png"></div>
+
+			<!-- login- form start herer -->
+			<div class="form-div">
+				<ul class="input-fields">
+					<li class="list">
+						<label class="title"> Username</label>
+						<input type="text" name="" class="input-box" placeholder="Username" ng-model="admin_login_data.username">
+					</li>
+					<li class="list">
+						<label class="title"> Password</label>
+						<input type="password" name="" ng-enter="admin_login(admin_login_data)" class="input-box" placeholder="Password" ng-model="admin_login_data.password">
+					</li>
+					<li class="list">
+						<div class="remember">
+							<!--<label>
+								<input type="checkbox" name="" class="checkbox">
+								Remember Me
+							</label>-->
+						</div>
+						<input type="submit" name="" class="submit-btn right" value="Log In" ng-click="admin_login(admin_login_data)">
+					</li>
+				</ul>
+			</div>
+			<!-- login- form end herer -->
+
+		
+		</div>
+	</div>
+</div>
+<!-- main container end herer -->
+</div>

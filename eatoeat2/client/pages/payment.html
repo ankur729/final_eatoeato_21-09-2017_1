@@ -1,0 +1,59 @@
+<div class="header common-header" ng-controller="user_register" >
+	<div class="container">
+		<a href="#/listing" class="logo"><img src="public/images/logo.png"></a>
+	
+		<div ng-include="'pages/inc/right-menu.html'" class="right-menu-pannel"></div>
+	</div>
+
+<div ng-include="'pages/inc/breadcrumbs.html'" class="bread_ui ng-scope"><div class="container ng-scope" ng-init="loc_val_cookies()">
+	<ul class="breadcrumbs">
+		<li class="list"><a href="#/" class="link">Home</a></li>
+		<!--<li class="list"><a href="#/listing" class="link">Listing</a></li>-->
+		<!--<li class="list ng-binding">Preet Vihar</li>-->
+		
+	</ul>
+</div></div>
+
+</div>
+
+
+		<div ng-controller="user_register" ng-init="check_payment_status()">
+
+		
+
+
+	<div class="container info-page"  >
+		<div class="inner-body">
+	 	<div class="payment-success" ng-if="payment_status_for_landingPage.stat=='success'">
+			<h1 class="heading">Success</h1>
+			<span class="icon"><img src="public/images/icon/payment-success.png"></span>
+			<div class="text-part">
+				<span class="main-caption">Order Complete</span>
+				<span class="sub-caption">Thankyou for your order, Please enjoy your meal </span>
+			</div>
+			<ul class="buttons">
+				<li class="list"><a href="#/">Back to Home</a></li>
+				<li class="list"><a href="#/listing">Continue Shoping</a></li>
+			</ul>
+		</div> 
+
+		<div class="payment-success" ng-if="payment_status_for_landingPage.stat=='failure'">
+			<h1 class="heading">Failed</h1>
+			<span class="icon"><img src="public/images/icon/payment-fail.png"></span>
+			<div class="text-part">
+				<span class="main-caption">Order fail</span>
+				<span class="sub-caption">Sorry your order has been failed for some reasone</span>
+			</div>
+			<ul class="buttons">
+				<li class="list"><a href="#/">Back to Home</a></li>
+				<li class="list"><a href="#/listing">Continue Shoping</a></li>
+			</ul>
+		</div>
+
+
+		</div>
+	</div>
+	
+	</div>
+
+<div ng-include="'pages/inc/footer.html'" ></div>

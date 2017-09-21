@@ -1,0 +1,8 @@
+<div ng-include="'pages/user/checkout/food-summary.html'" class="food-fummery w-shadow"></div>
+
+<div ng-include="'pages/user/checkout/coupon-code.html'"  class="have-coupon w-shadow" ng-show="show_review_order_checkout"></div>
+<div ng-include="'pages/user/checkout/payment-mode.html'"  class="have-coupon w-shadow" ng-show="show_review_order_checkout"></div>
+
+<div ng-include="'pages/user/checkout/pay-cod.html'"  class="pay-wallet w-shadow" ng-show="show_pay_mode_cod"></div>
+<div ng-include="'pages/user/checkout/pay-online.html'"  class="pay-wallet w-shadow" ng-show="show_pay_mode_online"></div>
+<div ng-include="'pages/user/checkout/pay-with-wallet.html'"  class="pay-wallet w-shadow" ng-show="show_pay_mode_wallet"></div>

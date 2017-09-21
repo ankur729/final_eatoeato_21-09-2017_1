@@ -1,0 +1,335 @@
+<div>
+
+	<div class="main-container dashboard" ng-controller="delivery_boy_controller" ng-init="fetchdvpickupdata2()">
+	
+	<div class="delivery-panel">
+
+		<div class="otp-popup" id="otp-popup">
+			<div class="inner-design">
+				<span class="close-popup"><i class="fa fa-close"></i></span>
+				<span class="title">Enter OTP of Cook</span>
+				<div class="input-div"><input type="text" name="" class="input-box" placeholder="Enter OTP"></div>
+				<div class="input-div margin-top-20px"><input type="submit" name="" class="submit-btn" value="Submit OTP"></div>
+			</div>
+		</div>
+	</div>
+
+
+		<div class="delivery-panel">
+
+
+			<div ng-include="'pages/admin/delboyleftmenu.html'"></div>
+		
+		</div>
+		<!-- header start here -->
+
+		<div class="delivery-panel">
+
+
+
+			<div class="header">
+				<span class="toggle-menu"><i class="fa fa-bars"></i></span>
+				<h2 class="title">Pickup List</h2>
+				<span class="search-toggle"><i class="fa fa-search" aria-hidden="true"></i></span>
+
+				<div class="search-show">
+					<div class="search-div">
+						<div class="coloum-div">
+							<i class="fa fa-long-arrow-left search-back" aria-hidden="true"></i>
+						</div>
+						<div class="coloum-div">
+							<input type="text" name="" class="input-box" placeholder="Search..." ng-model="fdvorder">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- header end here -->
+
+		<div class="delivery-panel">
+			<div class="tab-slider--nav">
+				<ul class="tab-slider--tabs slider">
+					<li class="tab-slider--trigger active col-md-50" rel="tab1_main" ng-click="fetchdvpickupdata2()"><a   ><span class="number">{{dvpickuplistdata.length}}</span> Today's <br>  Pickup</a></li>
+					<li class="tab-slider--trigger col-md-50" rel="tab2_main" ng-click="fetchdvopenpickupdata()"><a ><span class="number">{{dvpickupopenlistdata.length}}</span> Open <br> Pickup</a></li>
+					<!--<li class="tab-slider--trigger col-md-33" rel="tab3_main" ng-click="fetchdvdelivereddata()"><a ><span class="number">9</span> Complete <br>Order</a></li>-->
+					<span class="slide-trigger"></span>
+				</ul>
+			</div>
+		</div>
+
+
+		<div class="delivery-panel">
+
+
+
+			<div class="tab-slider--container">
+				<div id="tab1_main" class="tab-slider--body active">
+					<!-- pickup List start here-->
+					<ul class="pickup-list">
+						<li class="list" ng-repeat="dvdata in dvpickuplistdata">
+							<div class="coloum-div">
+								<a style="cursor: pointer" ng-click="show_cook_pickup_info_temp(dvdata)" class="link">
+									<div class="location">{{dvdata.cook_data[0].landmark |limitTo:20}}... <span class="date">{{dvdata.items[0].order_date}} | {{dvdata.time | date:'hh:mm a'}} </span></div>
+									<span class="od-id">{{dvdata.order_id}}</span>
+								</a>
+							</div>
+							<div class="coloum-div">
+								<a class="pick-btn" style="cursor: pointer" ng-click="pick_confirm_cook_order(dvdata)" ng-if="dvdata.is_picked=='false'">To Pick</a>
+								<a class="pick-btn  active" ng-if="dvdata.is_picked=='true'">Picked</a>
+							</div>
+						</li>
+						
+						<!--<li class="list">
+							<div class="coloum-div">
+								<a href="pickup-details.html" class="link">
+									<div class="location">G-11, Preet... <span class="date">09 Aug | 12am</span></div>
+									<span class="od-id">OD304061523264047000</span>
+								</a>
+							</div>
+							<div class="coloum-div">
+								<a href="#0" class="pick-btn open-otp">To Pick</a>
+							</div>
+						</li>-->
+					</ul>
+					<!-- pickup List end here-->
+				</div>
+
+
+				<!-- tab 2 start here -->
+				<div id="tab2_main" class="tab-slider--body">
+					<!-- pickup List start here-->
+					<ul class="pickup-list">
+							<li class="list" ng-repeat="dvdata in dvpickupopenlistdata |  filter: fdvorder">
+							<div class="coloum-div">
+								<a style="cursor: pointer" ng-click="show_cook_pickup_info_temp(dvdata)" class="link">
+									<div class="location">{{dvdata.cook_data[0].landmark |limitTo:20}}... <span class="date">{{dvdata.items[0].order_date}} | {{dvdata.time | date:'hh:mm a'}} (Delivery Time)</span></div>
+									<span class="od-id">{{dvdata.order_id}}</span>
+								</a>
+							</div>
+							<div class="coloum-div">
+								<a class="pick-btn" style="cursor: pointer" ng-if="dvdata.is_picked=='false'" ng-click="pick_confirm_cook_order(dvdata)">To Pick</a>
+								<a class="pick-btn active" ng-if="dvdata.is_picked=='true'">Picked</a>
+							</div>
+						</li>
+						<!--<li class="list">
+							<div class="coloum-div">
+								<a href="pickup-details.html" class="link">
+									<div class="location">G-11, Preet... <span class="date">09 Aug | 12am</span></div>
+									<span class="od-id">OD304061523264047000</span>
+								</a>
+							</div>
+							<div class="coloum-div">
+								<a href="#0" class="pick-btn">To Pick</a>
+							</div>
+						</li>
+						<li class="list">
+							<div class="coloum-div">
+								<a href="pickup-details.html" class="link">
+									<div class="location">G-11, Preet... <span class="date">09 Aug | 12am</span></div>
+									<span class="od-id">OD304061523264047000</span>
+								</a>
+							</div>
+							<div class="coloum-div">
+								<a href="#0" class="pick-btn">To Pick</a>
+							</div>
+						</li>
+						<li class="list">
+							<div class="coloum-div">
+								<a href="pickup-details.html" class="link">
+									<div class="location">G-11, Preet... <span class="date">09 Aug | 12am</span></div>
+									<span class="od-id">OD304061523264047000</span>
+								</a>
+							</div>
+							<div class="coloum-div">
+								<a href="#0" class="pick-btn">To Pick</a>
+							</div>
+						</li>
+						<li class="list">
+							<div class="coloum-div">
+								<a href="pickup-details.html" class="link">
+									<div class="location">G-11, Preet... <span class="date">09 Aug | 12am</span></div>
+									<span class="od-id">OD304061523264047000</span>
+								</a>
+							</div>
+							<div class="coloum-div">
+								<a href="#0" class="pick-btn">To Pick</a>
+							</div>
+						</li>
+						<li class="list">
+							<div class="coloum-div">
+								<a href="pickup-details.html" class="link">
+									<div class="location">G-11, Preet... <span class="date">09 Aug | 12am</span></div>
+									<span class="od-id">OD304061523264047000</span>
+								</a>
+							</div>
+							<div class="coloum-div">
+								<a href="#0" class="pick-btn">To Pick</a>
+							</div>
+						</li>
+						<li class="list">
+							<div class="coloum-div">
+								<a href="pickup-details.html" class="link">
+									<div class="location">G-11, Preet... <span class="date">09 Aug | 12am</span></div>
+									<span class="od-id">OD304061523264047000</span>
+								</a>
+							</div>
+							<div class="coloum-div">
+								<a href="#0" class="pick-btn">To Pick</a>
+							</div>
+						</li>-->
+					</ul>
+					<!-- pickup List end here-->
+				</div>
+				<!-- tab 2 end here -->
+
+
+				<!-- tab 3 start here -->
+				<!--<div id="tab3_main" class="tab-slider--body">
+				
+					<ul class="pickup-list">
+						<li class="list" ng-repeat="dvdata in dvdeliveredlistdata">
+							<div class="coloum-div">
+								<a href="#/deliveryboy/pickupdetails" class="link">
+									<div class="location">{{dvdata.cook_data[0].landmark |limitTo:6}}... <span class="date">{{dvdata.date}} | {{dvdata.time | date:'hh:mm a'}}</span></div>
+									<span class="od-id">{{dvdata.order_id}}</span>
+								</a>
+							</div>
+							<div class="coloum-div">
+								<a  class="pick-btn returned ">Delivered</a>
+							</div>
+						</li>
+					
+				
+					</ul>
+					
+				</div>-->
+				<!-- tab 3 end here -->
+
+
+			</div>
+
+		</div>
+
+
+
+	</div>
+
+</div>
+
+
+
+<script type="text/javascript">
+
+function popupOpen(){
+$(".otp-popup").fadeIn();
+};
+
+	// $(".open-otp").click(function () {
+	// 	$(".otp-popup").fadeIn();
+	// });
+
+	$(".close-popup").click(function () {
+		$(".otp-popup").fadeOut();
+	});
+
+	$(".toggle-menu").click(function () {
+		$(".left-menu").fadeIn();
+	});
+
+	$(".close-btn , .overlay").click(function () {
+		$(".left-menu").fadeOut();
+	});
+
+
+	$(".header .search-toggle").click(function () {
+		$(".search-show").show();
+	});
+	$(".header .search-back").click(function () {
+		$(".search-show").hide();
+	});
+
+
+
+	//console.log(window.location.hash);
+
+	$(".tab-slider--nav li a").click(function (e) {
+
+		$(".tab-slider--body").hide();
+		var activeTab = $(this).parent('li').attr("rel");
+		$('#' + activeTab).show();
+		// history.pushState({}, '', activeTab);
+		var setindex = $(this).parent('li').index();
+		var totalliwidth = 0;
+		var alltoatalliwidth = 0;
+		$(".tab-slider--nav li").each(function () {
+
+			var setliwidth = $(this).width();
+
+			var nsetndex = $(this).index();
+			if (nsetndex < setindex) {
+
+				totalliwidth += setliwidth;
+			}
+			alltoatalliwidth += setliwidth;
+
+
+		});
+		//console.log(totalliwidth);
+		$('.slide-trigger').css('left', totalliwidth);
+		$('.slide-trigger').css('width', $(this).parent('li').width() + 'px');
+		$('.tab-slider--trigger').children('a').removeClass('active');
+		$(this).addClass('active');
+
+	});
+
+	var mainhash = [];
+	$('.tab-slider--trigger').each(function () {
+
+		mainhash.push($(this).children('a').attr('href'));
+
+	});
+
+
+
+	var hash = window.location.hash.substr(1);
+
+	if (hash != '' && $.inArray("#" + hash, mainhash) != -1) {
+
+		$('.tab-slider--trigger').children('a').removeClass('active');
+		$('.tab-slider--trigger[rel=' + hash + '_main]').children('a').addClass('active');
+		$('.tab-slider--trigger[rel=' + hash + '_main]').addClass('divactive');
+		$('.tab-slider--body').hide();
+		$('#' + hash + '_main').show();
+		var totalliwidth = 0;
+		var alltoatalliwidth = 0;
+		var setindex = $('.tab-slider--trigger[rel=' + hash + '_main]').index();
+		var slidechild = $('.tab-slider--trigger.divactive').width();
+		$('.slide-trigger').css('width', slidechild + 'px');
+
+
+		$(".tab-slider--nav li").each(function () {
+
+			var setliwidth = $(this).width();
+
+			var nsetndex = $(this).index();
+			if (nsetndex < setindex) {
+
+				totalliwidth += setliwidth;
+			}
+			alltoatalliwidth += setliwidth;
+
+
+		});
+		$('.slide-trigger').css('left', totalliwidth);
+
+	} else {
+		slidechild = $('.tab-slider--trigger.active').width();
+		$('.slide-trigger').css('width', slidechild + 'px');
+		$(".tab-slider--body").hide();
+		$(".tab-slider--body.active").show();
+		$('.tab-slider--trigger').eq(0).children('a').addClass('active');
+
+
+	}
+
+</script>

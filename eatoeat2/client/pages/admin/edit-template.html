@@ -1,0 +1,103 @@
+
+<!-- main container start herer -->
+<div class="main-container dashboard" ng-controller="admin_controller">
+
+<div ng-include="'pages/admin/admin-left-menu.html'"></div>
+
+	<div class="work-pannel">
+		<!-- top header start here -->
+		<div class="top-header">
+			<div class="container">
+				<ul class="menu">
+					<li class="logout-btn"><a href="#0" class="main-link">Logout</a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- top header end here -->
+
+		<div class="container" ng-init="fetch_sms_template_by_name()">
+			<div class="view-pannel" >
+
+				<!-- page bar start here -->
+				<div class="page-name-bar">
+					<h2 class="page-name">Edit SMS Template</h2>
+					<ul class="breadcrumbs">
+						<li class="list"><a href="#/admin" class="link">Home</a></li>
+						
+						<li class="list">Sms Template</li>
+					</ul>
+
+					<ul class="link-icon">
+						<li class="list"><div class="blue-btn" ng-click="edit_sms_template(edit_template_view)"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></div></li>
+						<li class="list"><a href="#/admin/view-sms-template" class="white-btn"><i class="fa fa-angle-left" aria-hidden="true"></i></a></li>
+					</ul>
+				</div>
+				<!-- page bar end here -->
+
+				<!-- table view start here -->
+				<div class="table-view">
+					<h3 class="head-name"><i class="fa fa-pencil-square-o icon-name" aria-hidden="true"></i>Edit Sms Template</h3>
+
+						<div class="row ">
+							<div class="row field-fillup">
+								<span class="input-field-title mendatory">Editing File</span>
+								<div class="col-md-80 input-div">
+									
+									<input type="text" name="" class="input-box" placeholder="Template Name" id="mail_body_name" ng-model="edit_template_view.name" readonly>
+									
+
+						
+								</div>
+							</div>
+
+						<!-- 	<div class="row field-fillup">
+								<span class="input-field-title">Subject</span>
+								<div class="col-md-80 input-div"><input type="text" name="" class="input-box" placeholder="Subject"></div>
+							</div> -->
+
+							<div class="row field-fillup">
+								<span class="input-field-title">Body</span>
+								<div class="col-md-80 input-div">
+										<textarea class="textarea row-px-200" id="mail_body" ng-model="edit_template_view.body" >
+{{basic_sms_template}}
+
+
+</textarea>
+									
+								</div>
+							</div>
+
+							<div class="row field-fillup">
+								<span class="input-field-title mendatory">Useable Variables For Subject</span>
+								<div class="col-md-80 input-div">
+										<div ng-click="sms_temp('^^FIRST_NAME^^')" class="click-to-add"> First name</div>	
+										<!--<div ng-click="sms_temp('^^LAST_NAME^^')" class="click-to-add"> Last Name</div>
+										<div ng-click="sms_temp('^^EMAIL_ID^^')" class="click-to-add"> Email Id</div>
+										<div ng-click="sms_temp('^^PHONE^^')" class="click-to-add"> Phone number</div>	-->
+								</div>
+							</div>
+
+
+						</div>
+
+				</div>
+				<!-- table view end here -->
+
+
+			</div>
+		</div>
+
+	</div>
+</div>
+<!-- main container end herer -->
+
+
+<script type="text/javascript">
+	
+$(".left-pannel .main-list").click(function(){
+	$(this).children(".nav-fly").slideToggle(200);
+	$(this).nextAll(".main-list").children(".nav-fly").slideUp(1000);
+	$(this).prevAll(".main-list").children(".nav-fly").slideUp(1000);
+});
+
+</script>

@@ -1,0 +1,84 @@
+<div class="main-container dashboard" ng-controller="delivery_boy_controller" ng-init="fetchdvprofiledata()">
+
+	<div class="delivery-panel">
+	<div ng-include="'pages/admin/delboyleftmenu.html'"></div>
+	</div>
+
+	<!-- header start here -->
+	<div class="delivery-panel">
+		<div class="header">
+			<span class="toggle-menu"><i class="fa fa-bars"></i></span>
+			<h2 class="title">Profile Details</h2>
+		</div>
+	</div>
+	<!-- header end here -->
+
+	<!-- profile details start here -->
+	<div class="delivery-panel">
+
+		<div class="profile-detail-page">
+
+
+
+			<div class="delivery-list">
+				<h6 class="title">Your Details </h6>
+				<ul class="detail-list">
+					<li class="list-li">
+						<span class="label col-px-125">Your Name</span>
+						<span class="data ng-binding">{{dvprofiledata.name | uppercase}}</span>
+					</li>
+					<li class="list-li">
+						<span class="label col-px-125">Your Email</span>
+						<span class="data ng-binding">{{dvprofiledata.email}}</span>
+					</li>
+					<li class="list-li">
+						<span class="label col-px-125">Your Mobile</span>
+						<span class="data ng-binding">{{dvprofiledata.contact}}</span>
+					</li>
+					<li class="list-li">
+						<span class="label col-px-125">Service Center</span>
+						<span class="data ng-binding">{{dvprofiledata.service_center_name}}</span>
+					</li>
+					<li class="list-li">
+						<span class="label col-px-125">Total Order</span>
+						<span class="data ng-binding">{{dvprofiledata.totorder}}</span>
+					</li>
+					<li class="list-li">
+						<span class="label col-px-125">Delivered Order</span>
+						<span class="data ng-binding">{{dvprofiledata.deliveredorder}}</span>
+					</li>
+					<li class="list-li">
+						<span class="label col-px-125">Undelivered Order</span>
+						<span class="data ng-binding">{{dvprofiledata.pendingorder}}</span>
+					</li>
+					<li class="list-li">
+						<span class="label col-px-125">Join Date </span>
+						<span class="data ng-binding">{{dvprofiledata.joined_on}}</span>
+					</li>
+					<li class="list-li">
+						<span class="label col-px-125">Associated Cook </span>
+						<span class="data ng-binding">{{dvprofiledata.totalcooks}}</span>
+					</li>
+				</ul>
+			</div>
+
+		</div>
+
+	</div>
+	<!-- profile details end here -->
+
+
+	<script type="text/javascript">
+
+	$(".toggle-menu").click(function () {
+		$(".left-menu").fadeIn();
+	});
+
+	$(".close-btn , .overlay").click(function () {
+		$(".left-menu").fadeOut();
+	});
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<div class="notification_window" >
+			<h4 class="title-bar">Notificatddddddions ({{user_notify_data.length}})</h4>
+			<ul class="notification_list">
+				<!--<li class="list">
+					<div class="style">
+						<div class="food-details">
+							<span class="icon"><img src="http://localhost:3000/uploads/cook_uploads/thumb/HqNw70iAHIhRa.jpg"></span>
+							<div class="data">
+								<span class="name">Halwa</span>
+								<span class="price">Rs. 150 &nbsp;  | &nbsp;  Qty: 10 </span>
+							</div>
+						</div>
+						<p class="caption">An order has been genrated by a buyer for <span class="bold">(8-9-2017 | 12:30)</span> please make your food ready before  <span class="bold">11:30</span></p>
+					</div>
+				</li>-->
+				<li class="list" ng-repeat="notification in user_notify_data">
+					<div class="style">
+						<div class="notify_div">
+							<div class="coloum_div">
+								<span class="icon"><i class="fa fa-bell-o" aria-hidden="true"></i></span>
+							</div>
+							<div class="coloum_div">
+								<p class="caption"> <span class="bold">{{notification._id}} Rs. 1500 has been created to your wallet </span> <br> 26-8-2017 | 11:30 </p>
+							</div>
+						</div>
+					</div>
+				</li>
+
+				
+			</ul>
+		</div>

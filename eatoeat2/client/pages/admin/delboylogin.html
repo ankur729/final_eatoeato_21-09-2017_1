@@ -1,0 +1,43 @@
+<div class="main-container dashboard admin" ng-controller="delivery_boy_controller">
+	<div class="delivery-panel">
+
+		<div class="main-container login-page">
+			<div class="container">
+				<div class="management-login">
+					<div class="logo">
+						<a href=""></a><img src="pages/admin/images/logo.png"></div>
+
+					<!-- login- form start herer -->
+					<div class="form-div">
+						<h1 class="page-name">Login as Delivery Boy</h1>
+						<ul class="input-fields">
+							<li class="list">
+								<label class="title"> Mobile No.</label>
+								<input type="text" id="mobileno" name="" class="input-box" placeholder="Mobile No." ng-model="delboylogin_data.boy_contact">
+							</li>
+							<li class="list">
+								<label class="title"> Password</label>
+								<input type="password" id="pass" name="" ng-enter="delboylogin(delboylogin_data)" class="input-box" placeholder="Password" ng-model="delboylogin_data.boy_password">
+							</li>
+							<li class="list">
+								<div class="remember">
+									<!--<label>
+								<input type="checkbox" name="" class="checkbox">
+								Remember Me
+							</label>-->
+								</div>
+								<input type="submit" name="" class="submit-btn right" value="Log In" ng-click="delboylogin(delboylogin_data)">
+							</li>
+							<!--<span class="row center margin-top-10px"><a href="forgot.html" class="forgot-btn">Lost your password?</a></span>-->
+						</ul>
+					</div>
+					<!-- login- form end herer -->
+
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<!-- main container end herer -->
+</div>

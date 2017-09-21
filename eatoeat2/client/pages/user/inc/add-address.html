@@ -1,0 +1,98 @@
+
+
+  <ul class="table-view" ng-controller="user_register">
+    <form name="myForm">
+    <li class="list field-fillup">
+      <span class="input-field-title">Name</span>
+        <div class="input-div"><input name="addrname" tabindex="1" id="addrname" maxlength="200" class="input-box" placeholder="User Name" type="text" ng-model="user_address_detail.address_name">
+      
+    
+						<!-- show an error if username is too long -->
+	      </div>
+
+    </li>
+    <li class="list field-fillup">
+      <span class="input-field-title">Street Address</span>
+      <div class="input-div"><input name="" tabindex="2" id="streetaddr" class="input-box" placeholder="Flat/House No. Colony/Street No." type="text" ng-model="user_address_detail.address_details"></div>
+    </li>
+    <li class="list field-fillup">
+      <span class="input-field-title">Locality / Landmark</span>
+      <div class="input-div"><input name="" tabindex="3" id="autocomplete_addr" class="input-box" placeholder="Your Near Location/Landmark" type="text" ng-model="user_address_detail.address_locality"></div>
+               <button style="display: none" ng-click="autocomplete_addr_in_user_checkout()" class="location_btn"></button>
+    </li>
+    <li class="list field-fillup">
+      <span class="input-field-title">City</span>
+      <div class="input-div"><input name="" tabindex="4"  maxlength="19" id="addrcity" class="input-box" placeholder="City" type="text" ng-model="user_address_detail.address_city"></div>
+
+    </li>
+    <li class="list field-fillup">
+       <span class="input-field-title">State</span>
+      <div class="input-div"><input name="" tabindex="5"  maxlength="19" id="addrstate" class="input-box" placeholder="State" type="text" ng-model="user_address_detail.address_state"></div>
+     
+    </li>
+    <li class="list field-fillup">
+      <span class="input-field-title">Pincode</span>
+      <div class="input-div"><input name="" tabindex="6" id="addrpincode" maxlength="6" class="input-box" placeholder="Enter 6 Digit Pincode" type="text" ng-model="user_address_detail.address_pincode"></div>
+    </li>
+    <li class="list field-fillup">
+      <span class="input-field-title">Mobile Number </span>
+      <div class="input-div"><input name="" tabindex="7" id="mobile" maxlength="10" class="input-box" placeholder="10 Digit Mobile Number" type="text" ng-model="user_address_detail.address_contact"></div>
+    </li>
+    
+    <li class="list field-fillup" >
+      
+      <span class="input-field-title">Address Type</span>
+      <div class="input-div">
+        <input id="check1" name="addr_type" id="addr_type"   value="Home" class="fancy-radio" type="radio" ng-model="user_address_detail.address_type">
+        <label for="check1"  value="" class="fancy-radio-label">Home</label>
+
+        <input id="check2" name="addr_type"   id="addr_type" value="Office/Commercial" class="fancy-radio" type="radio" ng-model="user_address_detail.address_type">
+        <label for="check2" value="" class="fancy-radio-label"> Office/Commercial </label>
+
+      </div>
+   
+    </li>
+    <li class="list field-fillup">
+      <span class="input-field-title">Make it default</span>
+      <div class="input-div">
+        <input id="check3" name="check" value="check3" class="fancy-checkbox" type="checkbox">
+        <label for="check3" class="fancy-checkbox-label">Make this my default address</label>
+      </div>
+    </li>
+    <li class="list field-fillup">
+      <div class="input-div"><input name="" class="submit-btn" value="Save" type="submit" ng-click="update_user_address_checkout2(user_address_detail)"></div>
+    </li>
+    </form>
+  </ul>
+
+<script>
+
+  // $.cookie("eatoeato.loc", null, { path: '/' });
+  // $.cookie("formatted_addr", null, { path: '/' });
+  var options = {
+    types: ['(cities)'],
+
+  };
+
+  var input = document.getElementById('autocomplete_addr');
+
+  var autocomplete = new google.maps.places.Autocomplete(input);
+  google.maps.event.addListener(autocomplete, 'place_changed', function () {
+    fillInAddress();
+  });
+
+  function fillInAddress() {
+    /* Get the place details from the Autocomplete object. */
+    /* The Autocomplete.getPlace() call retrieves a PlaceResult object */
+
+    var place = autocomplete.getPlace();
+    //console.log(place);
+    // $.cookie('eatoeato.loc', place.address_components[0].long_name);
+    $.cookie('formatted_addr', place.formatted_address);
+    //console.log(place);
+    $('.location_btn').click();
+
+  }
+
+
+</script>

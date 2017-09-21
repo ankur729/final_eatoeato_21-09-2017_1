@@ -1,0 +1,66 @@
+<div class="container" ng-controller="cook_register">
+	<div class="cook-panel-head" ng-init="get_breadcrumb_name()">
+	<h4 class="cook-name">Hi, {{cook_name_breadcrumb}}</h4>
+	<div class="notification_Panel" ng-controller="user_register" >
+		<span class="notification">
+			<span class="icon">
+				<i class="number">{{view_notify_data_user.length}}</i>
+				<i class="fa fa-bell-o" aria-hidden="true"></i>
+			</span>
+		</span>
+
+		<div class="notification_window">
+			<h4 class="title-bar">Notifications ({{view_notify_data_user.length}})</h4>
+			<ul class="notification_list">
+				<!--<li class="list">
+					<div class="style">
+						<div class="food-details">
+							<span class="icon"><img src="http://localhost:3000/uploads/cook_uploads/thumb/HqNw70iAHIhRa.jpg"></span>
+							<div class="data">
+								<span class="name">Halwa</span>
+								<span class="price">Rs. 150 &nbsp;  | &nbsp;  Qty: 10 </span>
+							</div>
+						</div>
+						<p class="caption">An order has been genrated by a buyer for <span class="bold">(8-9-2017 | 12:30)</span> please make your food ready before  <span class="bold">11:30</span></p>
+					</div>
+				</li>-->
+				<li class="list" ng-repeat="notification in view_notify_data_user">
+					<div class="style">
+						<div class="notify_div">
+							<div class="coloum_div">
+								<span class="icon"><i class="fa fa-bell-o" aria-hidden="true"></i></span>
+							</div>
+							<div class="coloum_div">
+								<p class="caption"> <span class="bold">{{notification.message}} </span> <br> {{notification.date}} | {{notification.datetime | date:'hh:mm a'}} </p>
+							</div>
+						</div>
+					</div>
+				</li>
+
+				
+			</ul>
+		</div>
+	</div>
+	<div class="status" style="margin-right: 45px;padding-left: 5px; color:white" ng-init="check_activation_status()">
+		<span >{{is_cook_active}}</span> 
+		<!--<span ng-if="vv=='Pending For Approval'">Un-Approved</span> 
+		<span ng-if="vv=='new'">Un-Approved</span>-->
+	</div>
+
+	<div class="status"  ng-init="check_activation_status()">
+		
+		<span ng-if="vv=='Approved'">Approved</span> 
+		<span ng-if="vv=='Pending For Approval'">Un-Approved</span> 
+		<span ng-if="vv=='updated'">Un-Approved (Update Data)</span>
+		<span ng-if="vv=='new'">Un-Approved</span>
+	</div>
+	</div>
+
+</div>
+
+
+<script type="text/javascript">
+		$(".notification_Panel .notification").click(function(){
+			$(this).next (".notification_window").toggle();
+		});
+	</script>

@@ -1,0 +1,160 @@
+
+<!-- main container start herer -->
+<div class="main-container dashboard"   ng-controller="admin_controller" ng-init="admin_auth()">
+
+<div ng-include="'pages/admin/admin-left-menu.html'"></div>
+
+	<div class="work-pannel">
+		<!-- top header start here -->
+		<div class="top-header">
+			<div class="container">
+				<ul class="menu">
+					<li class="logout-btn" ng-click="admin_logout()"><a href="#0" class="main-link">Logout</a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- top header end here -->
+
+		<div class="container"  ng-init="fetch_user_all_review()">
+			<div class="view-pannel">
+
+				<!-- page bar start here -->
+				<div class="page-name-bar">
+					<h2 class="page-name">Reviews</h2>
+					<ul class="breadcrumbs">
+						<li class="list"><a href="#/admin" class="link">Home</a></li>
+						<li class="list">Reviews </li>
+					</ul>
+
+					<ul class="link-icon">
+						<!-- <li class="list"><a href="#/admin/add-review"  "add-review.html" class="blue-btn"><i class="fa fa-plus" aria-hidden="true"></i></a></li> -->
+						<li class="list"><a  class="white-btn" ng-click="fetch_user_all_review()" style="cursor: pointer"><i class="fa fa-refresh" aria-hidden="true"></i></a></li>
+						<!--<li class="list"><a href="#0" class="red-btn"><i class="fa fa-trash-o" aria-hidden="true"></i></a></li>-->
+					</ul>
+				</div>
+				<!-- page bar end here -->
+
+				<div class="table-view">
+					<h3 class="head-name">Reviews List </h3>
+
+					<div class="search-model">
+						<div class="search-div">
+							<label class="search-name">Food Name</label>
+							<input type="text" name="" class="input-box" placeholder="Food Name" ng-model="review.food_name">
+						</div>
+						<div class="search-div">
+							<label class="search-name">Username</label>
+							<input type="text" name="" class="input-box" placeholder="User Name" ng-model="review.username">
+						</div>
+						<div class="search-div">
+							<label class="search-name">Ratings</label>
+							<select class="select-option left" ng-model="review.food_rating">
+								<option value="">Select</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+							</select>
+						</div>
+						<!--<div class="search-div">
+							<label class="search-name">Status</label>
+							<select class="select-option left">
+								<option>Select</option>
+								<option>Enable</option>
+								<option>Disable</option>
+							</select>
+						</div>-->
+						<!--<div class="search-div">
+							<label class="search-name">Date Added</label>
+							<input type="text"  value="11-17-2015" id="demo-1" class="input-box">
+						</div>-->
+						<!--<button class="search-btn right">Filter</button>-->
+					</div>
+
+					<ul class="cat-listing-show">
+						<!-- heading part start here-->
+						<li class="list main-name">
+							<!--<div class="coloum-div col-px-30 center">
+								<input type="checkbox" name="" class="check-all-btn">
+							</div>-->
+							<div class="coloum-div col-md-50">
+								<span class="title">Food Name</span>
+							</div>
+							<div class="coloum-div col-md-15 center">
+								<span class="title">Username </span>
+							</div>
+							<div class="coloum-div col-md-10 center">
+								<span class="title">Rating</span>
+							</div>
+							<!--<div class="coloum-div col-md-10 center">
+								<span class="title">Status</span>
+							</div>-->
+							<div class="coloum-div col-md-10 center">
+								<span class="title">Date Added</span>
+							</div>
+							<div class="coloum-div center col-md-10">
+								<span class="title">Edit</span>
+							</div>
+							
+						</li>
+					</ul>
+					<!-- heading part end here-->
+					<ul class="cat-listing-show list-group">
+						<!--<li class="list deactive">
+							<div class="coloum-div col-px-30 center">
+								<input type="checkbox" name="" class="check-btn">
+							</div>
+							<div class="coloum-div col-md-40">
+								<span class="title">Apple Cinema 30"</span>
+							</div>
+							<div class="coloum-div col-md-15 center">
+								<span class="title">Vinay</span>
+							</div>
+							<div class="coloum-div col-md-10 center">
+								<span class="title">1</span>
+							</div>
+							<div class="coloum-div col-md-10 center">
+								<span class="title">Disable</span>
+							</div>
+							<div class="coloum-div col-md-10 center">
+								<span class="title">14/09/2016</span>
+							</div>
+							<div class="coloum-div center  col-md-10">
+								<a href="#0" class="red-btn"><i class="fa fa-edit" aria-hidden="true"></i></a>
+							</div>
+						</li>-->
+						<li class="list" ng-repeat="review in view_user_review_admin  | filter:{ food_name:review.food_name } | filter:{ username:review.username } | filter:{ review_rating:review.food_rating }">
+							<!--<div class="coloum-div col-px-30 center">
+								<input type="checkbox" name="" class="check-btn">
+							</div>-->
+							<div class="coloum-div col-md-50">
+								<span class="title">{{review.food_name | capitalize}}</span>
+							</div>
+							<div class="coloum-div col-md-15 center">
+								<span class="title">{{review.username | capitalize}}</span>
+							</div>
+							<div class="coloum-div col-md-10 center">
+								<span class="title">{{review.review_rating}}</span>
+							</div>
+							<!--<div class="coloum-div col-md-10 center">
+								<span class="title">Enable</span>
+							</div>-->
+							<div class="coloum-div col-md-10 center">
+								<span class="title">{{review.date}}</span>
+							</div>
+							<div class="coloum-div center  col-md-10">
+								<a href="#/admin/edit-review" class="no-btn" ng-click="view_order_temp_id(review._id)"><i class="fa fa-edit" aria-hidden="true"></i></a>
+							</div>
+						</li>
+					
+					
+
+					</ul>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+<!-- main container end herer -->

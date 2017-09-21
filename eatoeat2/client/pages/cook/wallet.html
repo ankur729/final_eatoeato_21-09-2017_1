@@ -1,0 +1,138 @@
+<div ng-include="'pages/cook/inc/cook-header.html'" class="common-header"></div>
+
+	<div class="container my-account-page" ng-controller="cook_register">
+		<div ng-include="'pages/cook/inc/account-panel.html'" class="left-panel"></div>
+
+		<div class="right-panel wallet-page" ng-init="fetch_cook_pay_info()">
+
+			<!-- add ammount start here -->
+			<div class="add-money w-shadow">
+				<div class="coloum-div wallet-balance">
+					<h4 class="amount" ng-if="view_cook_pay_info.length>0">Rs {{view_cook_pay_info[0].tot_paid}}</h4>
+					<h4 class="amount" ng-if="view_cook_pay_info.length <1">Rs 0.0</h4>
+					<span class="caption">your total payment </span>
+				</div>
+				<!--<div class="coloum-div add-field">
+					<div class="data-sort right">
+						<div class="sort-by">
+							Sort by: <span class="get-data">High to Low</span>
+						</div>
+						<ul class="sort-well">
+							<li class="list"><a class="link">Last Month</a></li>
+							<li class="list"><a class="link">Last 6 month</a></li>
+							<li class="list"><a class="link">Last Year</a></li>
+							<li class="list"><a class="link">Previous All</a></li>
+						</ul>
+					</div>
+				</div>-->
+			</div>
+			<!-- add ammount end here -->
+
+			<div class="transaction-history w-shadow">
+				<div class="table-scroll-view">
+				
+					
+					<ul class="cat-listing-show">
+						<!-- heading part start here-->
+						<li class="list main-name">
+							<div class="coloum-div col-px-200">
+								<span class="title">Order Id</span>
+							</div>
+							
+							<div class="coloum-div col-px-100 center">
+								<span class="title">Date</span>
+							</div>
+							
+							<div class="coloum-div col-px-100 center">
+								<span class="title">Time</span>
+							</div>
+
+						
+					
+							
+
+							<div class="coloum-div">
+								<!--<div class="coloum-group center">{{view_cook_pay_info[0].cookname}}</div>-->
+								<div class="center col-md-50 left">
+									<span class="title">Food Value</span>
+								</div>
+								<div class="center col-md-20 left">
+								</div>
+								<div class=" center col-md-50 left">
+									<span class="title">GST</span>
+								</div>
+							</div>
+
+		
+
+						
+
+							<div class="coloum-div col-px-100 center">
+								<span class="title">Pay Status</span>
+							</div>
+
+							
+
+							
+						
+						</li>
+					</ul>
+					<!-- heading part end here-->
+					<ul class="cat-listing-show list-group">
+						
+						<li class="list" ng-repeat="income in view_cook_pay_info" >
+							<div class="coloum-div col-px-200">
+								<span class="title">{{income.order_id}}</span>
+							</div>
+						
+							<div class="coloum-div col-px-100  center">
+								<span class="title">{{income.date}}</span>
+							</div>
+							
+							<div class="coloum-div col-px-100  center">
+								<span class="title"> {{income.time}}</span>
+							</div>
+
+						
+
+
+
+							<div class="coloum-div">
+								<div class="center col-md-50 left">
+									<span class="title">Rs. {{income.food_tot_val}}</span>
+								</div>
+								<div class="center col-md-20 left">
+								</div>
+								<div class=" center col-md-50 left">
+									<span class="title">Rs. {{income.tax_rate}}</span>
+								</div>
+							</div>
+
+												
+					
+						
+
+							<div class="coloum-div col-px-100 center">
+								<span class="title" ng-if="income.paid_status == 0" >UnPaid</span>
+								<span class="title" ng-if="income.paid_status== 1" style="color: green">Paid</span>
+							</div>
+
+											
+						</li>
+
+
+					</ul>
+		
+					</div>	
+			</div>
+		</div>
+	</div>
+
+<div ng-include="'pages/cook/inc/footer-cook.html'"></div>
+
+<script type="text/javascript">
+	$(".data-sort .sort-well .list .link").click(function(){
+	$(this).parents(".sort-well").prev(".sort-by").children(".get-data").html(this.innerHTML);
+});
+
+</script>

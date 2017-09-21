@@ -1,0 +1,228 @@
+
+@media screen and (max-width: 1366px){
+
+}
+
+@media screen and (max-width: 1100px){
+.cart-page .cart-management .cart-tiles .list .coloum-div:first-child{display: none;}
+.checkout-page .left-panel .checkout-steps .login-check {padding: 25px 15px;}
+.checkout-page .left-panel .checkout-steps .register-check  {padding: 25px 15px;}
+.my-account-page .update-profile .display-setting .form-box .col-md-40{width: 45%;}
+.common-header .bread_ui {padding: 10px 20px;}
+}
+
+@media screen and (max-width: 1000px){
+.listing-page .right-panel .display-ads .list {height: auto;}
+.listing-page .right-panel .food-list > .list {width: 100%;}
+.listing-page .left-panel {width: 35%;}
+.listing-page .right-panel {width: 65%;}
+
+.cart-page .right-panel {width: 100%; padding-left: 0px;}
+.cart-page .cart-management .left-panel {width: 100%;}
+
+.checkout-page .left-panel {width: 65%;}
+.checkout-page .right-panel {width: 35%;}
+.checkout-page .add-address .table-view .list {width: 50%;}
+
+.checkout-page .cart-tiles .list .coloum-div:first-child {display: none;}
+.my-account-page > .left-panel {width: 100%;padding: 0px; padding: 0px 10px; margin-top: 10px;}
+.my-account-page > .right-panel {width: 100%; margin-top: 10px; padding: 0px 10px;}
+.my-account-page .review-page .review-display {width: 100%;}
+
+.cook-profile-page .step-bar .col-md-60{width: 85%;}
+.cook-profile-page .resp_company {width: 85%;}
+}
+
+@media screen and (max-width: 900px){
+
+.checkout-page .left-panel .checkout-steps .login-check {width: 100%;}
+.checkout-page .left-panel .checkout-steps .register-check  {width: 100%;}
+.contact-us .left-panel {padding-right: 50px;}
+
+.detail-page .full-detail .right-panel {display: none;}
+.detail-page .full-detail .left-panel {width: 100%; float: right;}
+}
+
+@media screen and (max-width: 768px){
+.home-search .location-search {width: 100%;}
+.main-page .instructions .list .style .text {display: none;}
+footer .link-section .coloum-div {float: left; width: 50%;}
+footer .link-section {padding: 0px 20px;}
+footer .base-line .copyright {width: 100%;text-align: center;}
+footer .base-line .design-by {width: 100%;text-align: center;}
+.contact-us .left-panel {width: 100%; display: block;}
+.contact-us .contact-form {width: 100%; display: block;}
+.contact-us {padding: 0px 20px;}
+.info-page .inner-body .top-details {padding: 20px; margin: 0px;}
+.listing-search {width: 100%;}
+.generic-search {padding: 15px;}
+
+.listing-page .right-panel {width: 100%;}
+.listing-page .left-panel {width: 100%; padding: 0px 10px;}
+.listing-page .right-panel .display-ads {padding: 0px 5px;margin: 10px 0px;}
+/*.left-panel .filter-panel .multipe-filter {display: none;}*/
+.listing-page .right-panel .map-view {padding: 5px 10px;}
+
+.detail-page .full-detail .left-panel .tab-list .tab-data .gallery .list {width: 100%; height: auto;}
+.detail-page .full-detail .left-panel .tab-list .tab-data .gallery .list img {max-width: 100%; max-height: 100%; height: auto;}
+.detail-page .full-detail .review-list {padding-right: 0px;}
+
+.no_tb {display: none!important;}
+.cart-page .cart-management .cart-tiles .list .coloum-div.col-px-200 {display: none;}
+
+.checkout-page .right-panel {float: left; width: 100%; padding: 20px;}
+.checkout-page .left-panel {float: right; width: 100%; padding: 0px 20px;}
+
+.my-account-page .add-address .table-view .list {width: 50%;}
+.my-account-page .add-address .table-view {padding: 15px;}
+.my-account-page .add-address .page-name {padding: 25px 15px;}
+.my-account-page > .right-panel {padding: 10px;}
+
+.my-account-page .update-password .left-panel {width: 100%; padding: 0px; border: none; display: block;}
+.my-account-page .update-password .right-panel {width: 100%; padding: 50px 0px; border: none; display: block; float: left;}
+
+.my-account-page .update-profile .display-setting .form-box .col-md-40 {width: 100%;}
+.my-account-page .update-profile .display-setting .right-panel {width: 100%;}
+.my-account-page .update-profile .display-setting datepicker .input-box {display: block;}
+.my-account-page .update-profile .display-setting ._720kb-datepicker-calendar {position: absolute!important; }
+
+.my-account-page .wallet-page .add-money .coloum-div.wallet-balance {float: left; width: 100%; display: block;}
+.my-account-page .wallet-page .add-money .coloum-div {display: block;}
+.my-account-page .wallet-page .add-money .coloum-div.add-field {padding: 0px; margin-top: 10px; float: left; width: 100%;}
+.my-account-page .wallet-page .add-money {padding: 20px 15px;}
+
+.my-account-page .wallet-page .transaction-history .main-title {padding: 20px 15px;}/*
+.my-account-page .wallet-page .transaction-history .table-view .list-show .list.main-name {display: none;}*/
+.my-account-page .wallet-page .transaction-history .table-view .list-show .list .coloum-div:last-child {display: none;}
+.my-account-page .wallet-page .transaction-history .table-view .list-show .list .coloum-div.col-px-100 {width: 60px;}
+.my-account-page .wallet-page .transaction-history .table-view .list-show .list .coloum-div.padding-left-30px {padding-left: 15px;}
+.order-page .order-listing .order-status .list {width: 100%; float: left;}
+.order-page .order-listing .order-status .list .table-row .data {text-align: left; padding: 0px 10px;}
+
+.cook-profile-page .form-sytling  {padding: 20px 15px;}
+.cook-profile-page .cook-profile-setup-steps .list {width: 50%;}
+.my-account-page .manage-account .display-area .left-pannel {width: 100%; padding: 0px;}
+.my-account-page .manage-account .display-area .form-display {padding: 20px 15px;}
+.profile-update-page .table-view .list {width: 50%;}
+.profile-update-page .table-view {padding: 15px 10px;}
+.company-detail-page .form-layout {padding: 10px 10px;}
+
+.add-food .field-fillup .input-field-title {float: left; width: 100%; display: block; text-align: left;}
+.add-food .field-fillup .input-div {float: left; width: 100%; display: block;}
+.add-food .field-fillup {padding: 10px;}
+.food-page .food-list > .list {width: 100%; padding: 5px;}
+.food-page .food-list > .list .style {padding: 8px;}
+.my-account-page .wallet-page .table-scroll-view {min-width: 700px;}
+.my-account-page .wallet-page .transaction-history {overflow-x: scroll;}
+
+.listing-page .left-panel .filter-toggle {display: block; float: left; width: 100%; padding: 15px; text-align: center; background: #000; color: #fff; cursor: pointer;}
+.left-panel .filter-panel {display: none;}
+
+.detail-page .full-detail .left-panel {display: table;}
+.detail-page .full-detail .left-panel .seaTabs_switch{display: table;}
+.detail-page .full-detail .left-panel .seaTabs .seaTabs_tab {display: table-cell;vertical-align: middle; float: none; border-right: 1px solid #539f3a;}
+
+}
+
+
+@media screen and (max-width: 550px){
+.order-page .order-cat .list .items {float: left; width: 100%;}
+.order-page .order-cat {width: 100%; display: table;}
+.order-page .order-cat .list {display: table-cell; width: 33.3%; text-align: center; padding: 10px 0px;}
+.order-page .order-listing .order-base .order-number {width: 100%; margin-top: 10px;}
+.order-page .order-listing .order-base {padding: 10px 15px;}
+.order-page .order-listing .ordered-product-details {padding: 10px 15px;}
+.order-page .order-listing .order-status {padding: 10px 15px;}
+.order-page .order-listing .order-status .list .table-row {margin: 0px;}
+.add-food .field-fillup .section-selector .list {width: 50%;}
+}
+
+
+@media screen and (max-width: 500px){
+.detail-page .full-detail .left-panel .tab-list .tab-data .gallery {width: 100%;}
+.detail-page .full-detail .left-panel .tab-list .tab-data .calendar {width: 100%;}
+.detail-page .full-detail .left-panel .tab-list .tab-data .calendar {padding: 0px;}
+._720kb-datepicker-calendar {position: inherit!important;}
+datepicker .input-box{display: none;}
+
+.detail-page .full-detail .review-list .list .div-coloum {width: 100%; display: table!important; margin-bottom: 10px;}
+.detail-page .full-detail .review-list .list .div-coloum.user-detail .initial-name {float: left;}
+.detail-page .full-detail .review-list .list .div-coloum .user-name {text-align: left;}
+.detail-page .full-detail .review-list .list .div-coloum.review-detail .title {font-size: 12px!important;}
+
+.cart-page .cart-management .cart-tiles .list.main-name {display: none;}
+.cart-page .cart-management .cart-tiles .list .coloum-div {display: block; float: left; width: 100%;}
+.cart-page .cart-management .cart-tiles .list .qty-controller{display: block;}
+.cart-page .cart-management .cart-tiles .list .remove-btn {float: left;}
+
+.checkout-page .add-address .table-view .list {width: 100%;}
+
+.checkout-page .cart-tiles {padding: 10px;}
+.checkout-page .cart-tiles .list .coloum-div.col-px-100 {width: 70px; text-align: center;}
+.right-menu-slide .right-panel {text-align: left;}
+
+.logo {float: left; width: 100%; text-align: center; margin-top: 10px; margin-bottom: 5px;}
+.logo img{display: block; }
+.my-account-page .add-address .table-view .list {width: 100%;margin-bottom: 0px;}
+.my-account-page .add-address .address-list {padding: 0px 20px; }
+.add-address .table-view .field-fillup .input-field-title {font-weight: bold;}
+.notification_Panel .notification_window {min-width: 300px;max-width: 300px;}
+
+.my-account-page .update-profile .display-setting .form-display {padding: 20px 15px;}
+.order-page .order-number-display .right {float: left; width: 100%;}
+.order-page .order-number-display ._720kb-datepicker-calendar {position: absolute!important;}
+
+.cook-profile-page .form-layout .field-fillup {width: 100%;}
+.cook-profile-page .step-bar {display: none;}
+
+.profile-update-page .table-view .list {width: 100%;}
+.profile-update-page .seaTabs_switch_active {display: none;}
+
+.company-detail-page .form-layout .field-fillup {width: 100%;}
+
+.add-food  .row .col-md-50{float: left; width: 100%;}
+
+.add-food .field-fillup .input-div ._720kb-datepicker-calendar {position: absolute!important;}
+.notification_Panel .notification_window .notification_list .list .notify_div .coloum_div .icon {display: none;}
+
+.right-menu-pannel {width: 100%; text-align: center;}
+.header .logo {width: 100%; float: left; text-align: center;}
+.joint-widgets {float: none; margin: 0 auto; display: table;}
+.listing-page .logo {float: left; width: 100%; text-align: center; margin-top: 10px; margin-bottom: 5px;}
+.listing-page .logo img{display: block; }
+.user-join-page .form-display {width: 90%; min-width: auto;}
+.left-panel .filter-panel datepicker .input-box {display: block;}
+.left-panel .filter-panel ._720kb-datepicker-calendar {position: absolute!important;}
+.listing-page .process-detail {padding: 0px 10px;}
+.listing-page .process-detail .detail-title {font-size: 13px;}
+}
+
+
+@media screen and (max-width: 400px){
+
+
+.home-search .location-search .coloum-div .locate-me {padding: 0px 10px;}
+.home-search .location-search .coloum-div.col-px-100 {width: 100px;}
+.home-search .location-search {padding: 15px;}
+footer .link-section .coloum-div {width: 100%; margin-bottom: 15px;}
+.listing-page .right-panel .display-ads .list {width: 100%; margin-bottom: 10px;}
+.listing-page .right-panel .seaTabs_switch {padding: 0px 10px;}
+.listing-page .right-panel .food-list > .list {padding: 0px 10px;}
+.data-sort {width: 100px;}
+.listing-page .process-detail .detail-title {font-size: 16px;}
+.listing-page .process-detail {padding: 0px 10px;}
+.listing-page .right-panel .food-list > .list .style .coloum-div.thumb img {width: 100%;}
+.listing-page .right-panel .food-list > .list .style .coloum-div.thumb {width: 110px;}
+.listing-page .right-panel .food-list > .list .style .coloum-div.data .name .food_provide {line-height: 13px;}
+.listing-page .right-panel .food-list > .list .style .coloum-div.data .cuisines {line-height: 10px;}
+.right-menu-pannel .menu-btn {position: absolute; top: 10px; right: 20px;}
+.checkout-page .left-panel {padding: 0px 10px;}
+
+.my-account-page .review-page .review-display .review-list .review-data {padding-right: 0px;}
+.my-account-page .update-password .page-name {padding: 25px 10px; text-align: center; font-weight: bold;}
+.my-account-page .update-password .display-setting {padding: 20px 15px;}
+.my-account-page .update-profile .page-name {padding: 25px 15px;}
+.my-account-page .update-profile .display-setting {padding: 25px 15px;}
+
+.my-account-page .wallet-page .add-money .coloum-div.add-field .left {padding: 0px; width: 100%; float: left;}
+}
